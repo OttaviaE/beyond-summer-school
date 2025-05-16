@@ -1,0 +1,404 @@
+---
+title: "Say 'when': Item response theory procedures for
+shortening tests"
+author: "Ottavia M. Epifania & Friends"
+format: 
+  revealjs: 
+    theme: mytheme.scss
+    logo: "www/psicostat.jpg"
+    footer: "Beyond summer school @ DiPSCo"
+    transition: slide
+    background-transition: fade
+# background-opacity: "0.45"
+#    data-background-size: 400px, cover
+#    data-background-position: 50% 10%, center
+server: shiny
+---
+
+
+```{css include = FALSE}
+.reveal .slide-logo {
+  height: 100px !important;
+  width: 100px !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
+.title-hex{
+  height: 10px;
+  align: right;
+  float: right;
+}
+.h3 {
+text-align: center;
+}
+```
+
+
+
+```{r, setup, include=FALSE}
+library(knitr)
+library(shiny)
+library(ggplot2)
+library(tidyverse)
+library(emoji)
+hexes <- function(x) {
+  x <- rev(sort(x))
+  markup <- function(img) glue::glue('<img width="10%" height="10%" src="www/{img}.jpg" class="title-hex">')
+  res <- purrr::map_chr(x, markup)
+  paste0(res, collapse = "")
+}
+IRT <- function(theta, a = 1, b = 0, c = 0,e = 1) {
+  y <- c + (e - c) * exp(a * (theta - b)) / (1 + exp(a * (theta - b)))
+  return(y)
+}
+# calcola l'IIF per un item specifico
+i_info <- function(b, a=1,c=0, e= 1,  theta = seq(-5,5,length.out=1000)){
+  Ii = (a^2)*IRT(theta, b = b, a = a, e = e )*(1- IRT(theta, b = b, a = a, e = e ))
+  return(Ii)
+}
+# calcola l'IIF di tutti gli item e restituisce in una lista di lunghezza ugaule a tutti 
+# gli item per cui si è calcolata l'IIF
+item_info <- function(ipar, theta = seq(-5,5,length.out=1000)){
+  item <- NULL
+  if (any(colnames(ipar) == "e")) {
+    for(i in 1:nrow(ipar)){
+      item[[i]] <- i_info(b = ipar[i, "b"],a = ipar[i, "a"], e = ipar[i, "e"], theta = theta)
+    } 
+  } else {
+    for(i in 1:nrow(ipar)){
+      item[[i]] <- i_info(b = ipar[i, "b"],a = ipar[i, "a"], theta = theta)
+    }
+  }
+  item = data.frame(do.call("cbind", item))
+  colnames(item) = rownames(ipar)
+  return(item)
+}
+set.seed(999)
+```
+
+
+
+# Introduction
+
+## Basics of IRT
+
+<br>
+
+The probability of an observed response (observed variable) depends on the characteristics of both the person and the item
+
+The characteristics of the <span style="color:#9B0014;">person</span> can be described by a parameter of the person  $\rightarrow$  latent trait (e.g., intelligence, self-esteem, extraversion etc.)
+
+
+
+The characteristics of the <span style="color:#3a5fcd;">item</span> can be described by one or more parameters (**difficulty**, **discrimination**, **guessing**, **careless error**)
+
+The item, the person and their characteristics are located on the same latent trait
+
+
+## To each its own... IRT model 
+
+<br>
+
+Different IRT models according to:
+
+- **Latent trait**: 
+
+::: {.fragment .highlight-red fragment-index=2}
+
+  - Uni dimensional model
+
+:::
+
+  - Multidimensional model
+  
+- **Response categories**: 
+
+::: {.fragment .highlight-red fragment-index=2}
+
+  - Dichotomous items (Two response categories, e.g., true/false, agree/disagree)
+
+:::
+
+  - Polytomous items (at least 3 response categories, e.g., Likert-type scale)
+  
+## Models for dichotomous items
+
+<br>
+
+These models can be distinguished according to the number of parameters describing the characteristics of the items. 
+
+- One-Parameter Logistic Model (1-PL)
+
+- Two-Parameter Logistic Model (2-PL; Birnbaum, 1968)
+
+- Three-Parameter Logistic Model (3-PL; Lord, 1980)
+
+- Four-Parameter Logistic Model (4-PL; Barton & Lord, 1981)
+
+## In general
+
+<br>
+
+
+- Person and items parameters are on the same latent trait 
+
+- As the distance on the latent trait between the person parameter and the item parameter increases, the probability of a correct response changes 
+
+- When the parameter of the person matches the parameter of the item, then the probability of observing a correct response is 50% (well....not always)
+
+## The 2-Parameter Logistic Model
+
+. . . 
+
+Item Response Function: 
+
+$$P(x_{pi} = 1|\theta_p, b_i, a_i) = \frac{\exp[a_i(\theta_p - b_i)])}{1 + \exp[a_i(\theta_p - b_i)]}$$
+<br>
+
+. . .
+
+Item Information Function: 
+
+
+$$IIF_i = a_i^2P(\theta, b_i, a_i)[1-P(\theta, b_i, a_i)]$$
+
+<br>
+
+. . .
+
+Test Information Function: 
+
+$$TIF = \sum_{i = 1}^{||B||} IIF_i$$
+
+
+
+
+## Intuitively 
+
+```{r}
+knitr::include_app("https://ottaviae.shinyapps.io/irt-app/", height = "800px")
+```
+
+
+
+## Short Test Forms -- Why?
+
+<br>
+
+Many items $\rightarrow$ good measurement precision, great reliability and so on
+	
+::: {.r-stack}
+Not always!
+:::
+
+. . .
+
+<br>
+
+People might get tired and frustrated 
+	 
+::: {.callout-tip}
+## IRT models for the win
+		
+Being focused on the item information and on the ability of each item to measure different levels of the latent trait, IRT models provide an ideal framework for developing STF (and not torturing people)	
+:::
+
+## Short Test Forms in Item Response Theory 
+
+::: {.fragment fragment-index=2}
+
+### Static STFs
+
+`r emoji("grinning cat")` Equal for all respondents 
+
+`r emoji("grinning cat")` Can be administered paper-and-pencil/computerized versions
+
+`r emoji("crying cat")` Might not provide adequate measurement precision of certain regions of the latent trait
+
+:::
+
+::: {.fragment fragment-index=3}
+
+### Adaptive STFs
+
+`r emoji("grinning cat")` Tailored on the actual level of ability of each respondent
+
+`r emoji("grinning cat")` Avoid frustration and boredom 
+
+`r emoji("crying cat")`  Fairness issues in specific evaluation contexts
+
+:::
+
+# New algorithms
+
+## Some premises 
+
+::: {.callout-note}
+## Key concept
+
+<font size = "4">
+**TIF target** ($TIF^*$) describing the desired characteristics of a test
+</font>
+:::
+
+::: {.callout-tip}
+## The aim of the algorithms
+
+<font size = "4">
+*Minimize the distance* between $TIF^*$ and that of the short test forms (STFs) 
+</font>
+:::
+
+
+::: {.callout-warning}
+## Their differences
+
+<font size = "4">
+The method for selecting and including the items in $Q \subset B$ from the item bank
+</font>
+:::
+
+
+
+
+::: {.callout-important}
+## Mean TIF
+
+<font size = "4">
+TIF is considered as mean TIF $\rightarrow$ as the number of items increases, the TIF increases
+</font>
+:::
+
+
+## Bruto 
+
+::: {.r-stack}
+
+![](www/bear.jpg){width="250" height="150"}
+
+:::
+
+
+$\forall Q \in\mathcal{Q} = 2^B \setminus \{\emptyset, B\}$, 
+
+
+1. $TIF^{Q} =  \frac{\sum_{i \in Q} IIF_i}{||Q||}$
+2. $\overline{\Delta}_{TIF^{Q}} =  \mathit{mean}(|TIF^* - TIF^{Q}|)$
+
+$Q_{bruto} = \arg \min_{Q \in \mathcal{Q}} \overline{\Delta}_{TIF^{Q}}$
+
+
+
+
+## ILA & ISA 
+
+
+![](www/twins.jpg){.absolute top=50 right=50 width="250" height="150"}
+
+<font size="4">
+$B$: Item bank 
+
+
+$Q^k \subset B$: Set of items selected for inclusion in the STF up to iteration $k$
+
+$\mathbf{TIF}^*$: TIF target 
+
+$i^*$: Item selected at each iteration
+</font>
+
+:::: {.columns}
+
+
+::: {.column width="50%"}
+
+ILA
+
+<font size="4">
+At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \geq 0$,
+
+
+1. $\theta_{target} := \arg \max |TIF^* - TIF^{k}|$
+
+::: {.fragment .highlight-red}
+2. $i^* := \arg \min_{i \in B\setminus Q^{k}} |\theta_{target} - b_i|$
+:::
+
+3.  $pTIF_{i^*} = \frac{TIF^k + IIF_{i^*}}{||Q^{k}|| + 1}$ 
+
+4. Termination Criterion: $|TIF^* - pTIF_{i^*}| \geq |TIF^* - TIF^{k}|$: 
+  - FALSE:  $Q^{k+1} = Q^{k} \cup \{i^*\}$, $TIF^{k+1} = pTIF_{i^*}$, iterates 1-4 
+  - TRUE: Stop, $Q_{ILA} = Q^k$
+  
+</font>
+:::
+
+::: {.column width="50%"}
+
+ISA
+
+
+<font size="4">
+At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \geq 0$,
+
+
+1. $\theta_{target} := \arg \max |TIF^* - TIF^{k}|$
+
+::: {.fragment .highlight-red}
+2. $i^* := \arg \max_{i \in B\setminus Q^k} IIF_i(\theta_{target})$
+:::
+
+3.  $pTIF_{i^*} = \frac{TIF^k + IIF_{i^*}}{||Q^{k}|| + 1}$ 
+
+4. Termination Criterion: $|TIF^* - pTIF_{i^*}| \geq |TIF^* - TIF^{k}|$: 
+  - FALSE:  $Q^{k+1} = Q^{k} \cup \{i^*\}$, $TIF^{k+1} = pTIF_{i^*}$, iterates 1-4 
+  - TRUE: Stop, $Q_{ISA} = Q^k$
+  
+</font>
+::: 
+
+::::
+
+## Frank 
+
+![](www/mrwolf.jpg){.absolute top=50 right=40 width="300" height="200"}
+
+At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \geq 0$,
+
+
+1. $A^k = B \setminus Q^k$
+
+2. $\forall i \in A^k$, $pTIF_{i}^k = \frac{TIF^k + IIF_{i}}{||Q^k||+1}$
+
+3. $i^* = \arg \min_{i \in A^k} |TIF^* - pTIF_i^k|$
+
+4. Termination criterion: $|TIF^* - pTIF_{i^*}| \geq |TIF^* - TIF^{k}|$: 
+
+  - FALSE, $k = k + 1,$ $Q^{k+1} = Q^k \cup \{D\}$, iterates 1-4
+
+  - TRUE, stops, $Q_{Frank} = Q^k$
+
+# Response fatigue 
+
+## 
+
+Tutto molto bello, tutti molto simpatici ma questi algoritmi nonm tengono in considerazion l'unica ragione per cui esistono, ovvero la stanchezza dovuta alla lunghezza della somministrazione
+
+All'andare avanti della somministrazione, comincia ad esserci la stanchezza e le risposte delle persone potrebbero risentirne in termini di accuratezza 
+
+## Response Fatigue
+
+Response fatigue: Lower the upper asymptote as described by $d$: 
+
+$$P(x_{pi}= 1| \theta_p, b_i, a_i, c_i, d_i) = c_i + (d_i -c_i) \dfrac{\exp[a_i(\theta_p - b_i)]}{1 + \exp[a_i(\theta_p - b_i)]}$$
+## Information Function 
+
+$$	\text{IIF}_{i}(r) = \dfrac{a_i^2[P(\theta)-c_i]^2[d_r - P(\theta)]^2}{(d_{r}-c_i)^2 P(\theta)Q(\theta)}$$
+
+## 
+
+```{r}
+knitr::include_app("https://ottaviae.shinyapps.io/app-tired/", height = "800px")
+```
+
+
+
