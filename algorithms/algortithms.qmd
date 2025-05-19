@@ -146,31 +146,105 @@ These models can be distinguished according to the number of parameters describi
 
 - When the parameter of the person matches the parameter of the item, then the probability of observing a correct response is 50% (well....not always)
 
+
+
 ## The 2-Parameter Logistic Model
 
-. . . 
-
-Item Response Function: 
 
 $$P(x_{pi} = 1|\theta_p, b_i, a_i) = \frac{\exp[a_i(\theta_p - b_i)])}{1 + \exp[a_i(\theta_p - b_i)]}$$
+
 <br>
 
-. . .
 
-Item Information Function: 
+:::: {.columns}
+
+::: {.column width="40%"}
+$\theta_p$: Latent trait level of person $p$
+
+$b_i$: Difficulty of item $i$
+
+$a_i$: Discrimination of item $i$
+
+:::
+
+::: {.column width="60%"}
+
+```{r}
+#| out-width: 100%
+
+library(png)
+lisa = readPNG( "www/lisa.png")
+bart = readPNG( "www/bart.png")
+theta = seq(-4,4, length.out = 1000)
+par(mar = c(5,7,4,2) + 0.1) 
+plot(theta, IRT(theta, a = 0.5, b = 0), 
+     type = "l", 
+     ylab = expression(paste("P(", x[p][i],  "= 1|", theta[p], ", ", b[i], ", ", a[i],  ")")), 
+     ylim = c(0,1 ), cex.lab= 2, 
+     cex.axis =1.5, xlab = expression(theta), lwd = 3)
+
+segments(-7, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+         1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+         col = "firebrick", lty = 3, lwd = 3)
+mycol = rgb(.54, .114, .89)
+segments(1, -exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+        1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+         col = "firebrick", lty = 3, lwd = 3)
+
+segments(-7, exp(0.5 *(-1))/(1+exp(0.5 *(-1))), 
+         -1, exp(0.5 *(-1))/(1+exp(0.5 *(-1))), 
+         col = "royalblue4", lty = 3, lwd = 3)
+
+rasterImage(lisa, 0.6, -0.10, 1.5, 0.15)
+rasterImage(bart, -1.5, -0.10, -0.5, 0.15)
+segments(-1, -exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
+        -1, exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
+         col = "royalblue4", lty = 3, lwd = 3)
+
+```
+
+:::
+
+::::
+
+
+
+
+## Item Information Function: 
 
 
 $$IIF_i = a_i^2P(\theta, b_i, a_i)[1-P(\theta, b_i, a_i)]$$
+```{r}
+ii = data.frame(a = c(1, 2), b = c(0,0), c = c(0,0), e = c(1,1))
+iifs = item_info(ii, theta)
+par(mar = c(5,7,4,2) + 0.1) 
+plot(theta, iifs[,1], 
+     type = "l", 
+     ylab = "IIFs",  cex.lab= 2, 
+     cex.axis =1.5, xlab = expression(theta), lwd = 3, ylim = c(0, 1))
+lines(theta, iifs[,2], col = "firebrick")
+```
 
-<br>
 
-. . .
 
-Test Information Function: 
+
+## Test Information Function: 
 
 $$TIF = \sum_{i = 1}^{||B||} IIF_i$$
 
 
+
+$B$: Set of items of a full-length test ($||X||$ cardinality of set $X$)
+
+```{r}
+#| fig-align: "center"
+#| out-width: 100%
+
+plot(theta, rowSums(iifs), 
+     type = "l", 
+     ylab = "IIFs",  cex.lab= 2, 
+     cex.axis =1.5, xlab = expression(theta), lwd = 3)
+```
 
 
 ## Intuitively 
@@ -270,7 +344,8 @@ TIF is considered as mean TIF $\rightarrow$ as the number of items increases, th
 :::
 
 
-## Bruto 
+
+## The gold standard: Bruto 
 
 ::: {.r-stack}
 
@@ -287,6 +362,15 @@ $\forall Q \in\mathcal{Q} = 2^B \setminus \{\emptyset, B\}$,
 
 $Q_{bruto} = \arg \min_{Q \in \mathcal{Q}} \overline{\Delta}_{TIF^{Q}}$
 
+
+## In general 
+
+```{r}
+#| fig-align: center
+
+
+knitr::include_graphics("www/str-algo.png")
+```
 
 
 
@@ -377,20 +461,31 @@ At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \ge
 
   - TRUE, stops, $Q_{Frank} = Q^k$
 
-# Response fatigue 
-
 ## 
 
-Tutto molto bello, tutti molto simpatici ma questi algoritmi nonm tengono in considerazion l'unica ragione per cui esistono, ovvero la stanchezza dovuta alla lunghezza della somministrazione
+Immagino qualche risultato? Il percentile? lo studio di simulazione? BOH
 
-All'andare avanti della somministrazione, comincia ad esserci la stanchezza e le risposte delle persone potrebbero risentirne in termini di accuratezza 
+# Response fatigue 
 
-## Response Fatigue
+## The careless error
 
-Response fatigue: Lower the upper asymptote as described by $d$: 
+Lower the upper asymptote as described by $d$: 
 
 $$P(x_{pi}= 1| \theta_p, b_i, a_i, c_i, d_i) = c_i + (d_i -c_i) \dfrac{\exp[a_i(\theta_p - b_i)]}{1 + \exp[a_i(\theta_p - b_i)]}$$
+$c_i$: Lower asymptote: When $\theta \to -\infty$, $P(x_{pi} = c_i)$ (should be 0) *Lucky guess*
+
+$d_i$: Upper asymptote: When $\theta \to +\infty$, $P(x_{pi} = d_i)$ (should be 1) *Careless error*
+
+
 ## Information Function 
+
+
+$d$ is a property related to rank of presentation $r$ of item $i$: The longer the administration, the higher the probability of observing careless mistakes, the lower the asymptote $d_r$:
+
+. . .
+
+The $\text{IIF}_i$ accounts for the careless error: 
+
 
 $$	\text{IIF}_{i}(r) = \dfrac{a_i^2[P(\theta)-c_i]^2[d_r - P(\theta)]^2}{(d_{r}-c_i)^2 P(\theta)Q(\theta)}$$
 
