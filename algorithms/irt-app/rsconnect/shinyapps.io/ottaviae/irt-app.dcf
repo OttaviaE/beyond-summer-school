@@ -5,6 +5,6 @@ account: ottaviae
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 14766959
-bundleId: 10293192
+bundleId: 10311978
 url: https://ottaviae.shinyapps.io/irt-app/
 version: 1

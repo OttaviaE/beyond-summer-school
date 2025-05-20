@@ -12,7 +12,7 @@ format:
 # background-opacity: "0.45"
 #    data-background-size: 400px, cover
 #    data-background-position: 50% 10%, center
-server: shiny
+# server: shiny
 ---
 
 
@@ -159,16 +159,23 @@ $$P(x_{pi} = 1|\theta_p, b_i, a_i) = \frac{\exp[a_i(\theta_p - b_i)])}{1 + \exp[
 :::: {.columns}
 
 ::: {.column width="40%"}
+<font size="5">
+
 $\theta_p$: Latent trait level of person $p$
 
 $b_i$: Difficulty of item $i$
 
 $a_i$: Discrimination of item $i$
 
+</font>
+
 :::
 
 ::: {.column width="60%"}
 
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out}
 ```{r}
 #| out-width: 100%
 
@@ -202,6 +209,67 @@ segments(-1, -exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
          col = "royalblue4", lty = 3, lwd = 3)
 
 ```
+:::
+
+::: {.fragment .fade-up}
+```{r}
+#| out-width: 100%
+
+library(png)
+lisa = readPNG( "www/lisa.png")
+bart = readPNG( "www/bart.png")
+theta = seq(-4,4, length.out = 1000)
+par(mar = c(5,7,4,2) + 0.1) 
+plot(theta, IRT(theta, a = 0.5, b = 0), 
+     type = "l", 
+     ylab = expression(paste("P(", x[p][i],  "= 1|", theta[p], ", ", b[i], ", ", a[i],  ")")), 
+     ylim = c(0,1 ), cex.lab= 2, 
+     cex.axis =1.5, xlab = expression(theta), lwd = 3, col = "seagreen")
+
+segments(-7, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+         1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+         col = "firebrick", lty = 3, lwd = 3)
+mycol = rgb(.54, .114, .89)
+segments(1, -exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+        1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+         col = "firebrick", lty = 3, lwd = 3)
+
+segments(-7, exp(0.5 *(-1))/(1+exp(0.5 *(-1))), 
+         -1, exp(0.5 *(-1))/(1+exp(0.5 *(-1))), 
+         col = "royalblue4", lty = 3, lwd = 3)
+
+rasterImage(lisa, 0.6, -0.10, 1.5, 0.15)
+rasterImage(bart, -1.5, -0.10, -0.5, 0.15)
+segments(-1, -exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
+        -1, exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
+         col = "royalblue4", lty = 3, lwd = 3)
+
+## aggiunge l'item più discirminativo a partità di tutto il resto 
+
+lines(theta, IRT(theta, a = 1.5, b = 0), 
+     type = "l", 
+     ylab = expression(paste("P(", x[p][i],  "= 1|", theta[p], ", ", b[i], ", ", a[i],  ")")), 
+     ylim = c(0,1 ), cex.lab= 2, 
+     cex.axis =1.5, xlab = expression(theta), lwd = 3, col = "darkorchid")
+segments(-7, exp(1.5 *(1))/(1+exp(1.5 *(1))), 
+         1, exp(1.5 *(1))/(1+exp(1.5 *(1))), 
+         col = "firebrick", lty = 3, lwd = 3)
+segments(1, -exp(1.5 *(1))/(1+exp(1.5 *(1))), 
+        1, exp(1.5 *(1))/(1+exp(1.5 *(1))), 
+         col = "firebrick", lty = 3, lwd = 3)
+
+segments(-7, exp(1.5 *(-1))/(1+exp(1.5 *(-1))), 
+         -1, exp(1.5 *(-1))/(1+exp(1.5 *(-1))), 
+         col = "royalblue4", lty = 3, lwd = 3)
+segments(-1, -exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
+        -1, exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
+         col = "royalblue4", lty = 3, lwd = 3)
+
+```
+:::
+
+:::
+
 
 :::
 
@@ -253,7 +321,7 @@ plot(theta, rowSums(iifs),
 knitr::include_app("https://ottaviae.shinyapps.io/irt-app/", height = "800px")
 ```
 
-
+# Short Test Forms
 
 ## Short Test Forms -- Why?
 
@@ -362,6 +430,9 @@ $\forall Q \in\mathcal{Q} = 2^B \setminus \{\emptyset, B\}$,
 
 $Q_{bruto} = \arg \min_{Q \in \mathcal{Q}} \overline{\Delta}_{TIF^{Q}}$
 
+. . . 
+
+It is "doomed" to find the best combination of items 
 
 ## In general 
 
@@ -372,6 +443,50 @@ $Q_{bruto} = \arg \min_{Q \in \mathcal{Q}} \overline{\Delta}_{TIF^{Q}}$
 knitr::include_graphics("www/str-algo.png")
 ```
 
+
+## Item Locating Algorithm – ILA
+
+
+::: {.panel-tabset}
+
+### TIF Target, $k = 0$
+
+```{r}
+knitr::include_graphics("www/TIF-target-1.png")
+```
+
+
+
+### $k = 1$
+
+
+```{r}
+knitr::include_graphics("www/TIF-first-1.png")
+```
+
+
+
+
+### $k = 2$
+
+```{r}
+knitr::include_graphics("www/TIF-second-1.png")
+```
+
+
+
+### $k = 3$
+
+```{r}
+knitr::include_graphics("www/TIF-third-1.png")
+```
+
+
+
+
+
+
+:::
 
 
 ## ILA & ISA 
@@ -442,7 +557,11 @@ At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \ge
 
 ::::
 
-## Frank 
+## Frank (I solve problems)
+
+$\theta$-targets are convenient but misleading: Look at the entire latent trait
+
+. . .
 
 ![](www/mrwolf.jpg){.absolute top=50 right=40 width="300" height="200"}
 
@@ -474,7 +593,54 @@ Lower the upper asymptote as described by $d$:
 $$P(x_{pi}= 1| \theta_p, b_i, a_i, c_i, d_i) = c_i + (d_i -c_i) \dfrac{\exp[a_i(\theta_p - b_i)]}{1 + \exp[a_i(\theta_p - b_i)]}$$
 $c_i$: Lower asymptote: When $\theta \to -\infty$, $P(x_{pi} = c_i)$ (should be 0) *Lucky guess*
 
+::: {.fragment .highlight-red}
 $d_i$: Upper asymptote: When $\theta \to +\infty$, $P(x_{pi} = d_i)$ (should be 1) *Careless error*
+:::
+
+::: {.r-stack}
+::: {.fragment .fade-in-then-out}
+```{r}
+#| out-width: "70%"
+#| fig-align: "center"
+theta = seq(-4,4, length.out = 1000)
+par(mar = c(5,7,4,2) + 0.1) 
+plot(theta, IRT(theta, a = 1.5, b = 0), 
+     type = "l", 
+     ylab = expression(paste("P(", x[p][i],  "= 1|", theta[p], ", ", b[i], ", ", a[i],  ")")), 
+     ylim = c(0,1 ), cex.lab= 2, 
+     cex.axis =1.5, xlab = expression(theta), lwd = 3, col = "seagreen")
+abline(h = 1, lwd = 2, lty = 3, col = "darkgray")
+```
+
+:::
+
+
+::: {.fragment .fade-in-then-out}
+```{r}
+#| out-width: "70%"
+#| fig-align: "center"
+
+par(mar = c(5,7,4,2) + 0.1) 
+plot(theta, IRT(theta, a = 1.5, b = 0), 
+     type = "l", 
+     ylab = expression(paste("P(", x[p][i],  "= 1|", theta[p], ", ", b[i], ", ", a[i],  ")")), 
+     ylim = c(0,1 ), cex.lab= 2, 
+     cex.axis =1.5, xlab = expression(theta), lwd = 3, col="seagreen")
+
+lines(theta, IRT(theta, a = 1.5, b = 0, e = .95), 
+     type = "l", 
+     ylab = expression(paste("P(", x[p][i],  "= 1|", theta[p], ", ", b[i], ", ", a[i],  ")")), 
+     ylim = c(0,1 ), cex.lab= 2, 
+     cex.axis =1.5, xlab = expression(theta), lwd = 3, col = "royalblue")
+abline(h = 1, lwd = 2, lty = 3, col = "darkgray")
+abline(h = .95, lwd = 2, lty = 3, col = "darkgray")
+
+```
+
+:::
+:::
+
+
 
 
 ## Information Function 
@@ -488,6 +654,8 @@ The $\text{IIF}_i$ accounts for the careless error:
 
 
 $$	\text{IIF}_{i}(r) = \dfrac{a_i^2[P(\theta)-c_i]^2[d_r - P(\theta)]^2}{(d_{r}-c_i)^2 P(\theta)Q(\theta)}$$
+$r = \{0, 1, \ldots, ||B||\}$
+
 
 ## 
 
@@ -496,4 +664,23 @@ knitr::include_app("https://ottaviae.shinyapps.io/app-tired/", height = "800px")
 ```
 
 
+## Léon (I solve problems *efficiently*)
 
+![](www/leon.jpg){.absolute top=30 right=30 width="250" height="150"}
+
+At $k = 0$: $\text{TIF}^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. 
+
+For $k \geq 0$,
+
+1. $A^k = B \setminus Q^k$ 
+
+2. $\forall i \in A^k$, $p\text{TIF}_{i}^k = \frac{\text{TIF}^k + \text{IIF}_{i}}{||Q^k||+1}$, with $r = \{0, 1, \ldots, ||Q^k||-1\}$
+
+3. $i^* = \arg \min_{i \in A^k} (|\text{TIF}_B - \text{pTIF}_i^k|)$
+
+4. Termination criterion: $|\text{TIF}_B - \text{pTIF}_{i^*}^k| \geq |\text{TIF}_B - \text{TIF}^{k}|$: 
+
+	- FALSE:  $Q^{k+1} = Q^{k} \cup \{i^*\}$, $\text{TIF}^{k+1} = p\text{TIF}_{i^*}$, iterates 1-4 
+		
+	- TRUE: Stop, 
+		$Q_{\text{Léon}} = Q^k$

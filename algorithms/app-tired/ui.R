@@ -12,9 +12,9 @@ ui <- fluidPage(
   
   # First row of sliders
   fluidRow(
-    column(4, sliderInput("b1", "d",  min = 0, max = 1, value = 1, step = 0.1)),
-    column(4, sliderInput("b2", "d1", min = 0, max = 1, value = 1, step = 0.1)),
-    column(4, sliderInput("b3", "d2", min = 0, max = 1, value = 1, step = 0.1))
+    column(4, sliderInput("b1", "d1",  min = 0, max = 1, value = 1, step = 0.1)),
+    column(4, sliderInput("b2", "d2", min = 0, max = 1, value = 1, step = 0.1)),
+    column(4, sliderInput("b3", "d3", min = 0, max = 1, value = 1, step = 0.1))
   ),
   br(),
   

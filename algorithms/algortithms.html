@@ -401,10 +401,14 @@ Ottavia M. Epifania &amp; Friends
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:40%;">
+<p><font size="5"></font></p><font size="5">
 <p><span class="math inline">\(\theta_p\)</span>: Latent trait level of person <span class="math inline">\(p\)</span></p>
 <p><span class="math inline">\(b_i\)</span>: Difficulty of item <span class="math inline">\(i\)</span></p>
 <p><span class="math inline">\(a_i\)</span>: Discrimination of item <span class="math inline">\(i\)</span></p>
+</font><p><font size="5"></font></p>
 </div><div class="column" style="width:60%;">
+<div class="r-stack">
+<div class="fragment fade-in-then-out">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -414,25 +418,43 @@ Ottavia M. Epifania &amp; Friends
 </div>
 </div>
 </div>
+</div>
+<div class="fragment fade-up">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div></div>
 </section>
 <section id="item-information-function" class="slide level2">
 <h2>Item Information Function:</h2>
 <p><span class="math display">\[IIF_i = a_i^2P(\theta, b_i, a_i)[1-P(\theta, b_i, a_i)]\]</span></p>
 
-<img data-src="algortithms_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<img data-src="algortithms_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="test-information-function" class="slide level2">
 <h2>Test Information Function:</h2>
 <p><span class="math display">\[TIF = \sum_{i = 1}^{||B||} IIF_i\]</span></p>
 <p><span class="math inline">\(B\)</span>: Set of items of a full-length test (<span class="math inline">\(||X||\)</span> cardinality of set <span class="math inline">\(X\)</span>)</p>
 
-<img data-src="algortithms_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="algortithms_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="intuitively" class="slide level2">
 <h2>Intuitively</h2>
 <div class="cell">
 <iframe src="https://ottaviae.shinyapps.io/irt-app/?showcase=0" width="960" height="800px" data-external="1">
 </iframe>
 </div>
+</section></section>
+<section>
+<section id="short-test-forms" class="title-slide slide level1 center">
+<h1>Short Test Forms</h1>
+
 </section>
 <section id="short-test-forms-why" class="slide level2">
 <h2>Short Test Forms – Why?</h2>
@@ -547,11 +569,66 @@ Ottavia M. Epifania &amp; Friends
 <li><span class="math inline">\(\overline{\Delta}_{TIF^{Q}} =  \mathit{mean}(|TIF^* - TIF^{Q}|)\)</span></li>
 </ol>
 <p><span class="math inline">\(Q_{bruto} = \arg \min_{Q \in \mathcal{Q}} \overline{\Delta}_{TIF^{Q}}\)</span></p>
+<div class="fragment">
+<p>It is “doomed” to find the best combination of items</p>
+</div>
 </section>
 <section id="in-general-1" class="slide level2">
 <h2>In general</h2>
 
 <img data-src="www/str-algo.png" class="quarto-figure quarto-figure-center r-stretch" width="348"></section>
+<section id="item-locating-algorithm-ila" class="slide level2">
+<h2>Item Locating Algorithm – ILA</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">TIF Target, <span class="math inline">\(k = 0\)</span></a></li><li><a href="#tabset-1-2"><span class="math inline">\(k = 1\)</span></a></li><li><a href="#tabset-1-3"><span class="math inline">\(k = 2\)</span></a></li><li><a href="#tabset-1-4"><span class="math inline">\(k = 3\)</span></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="www/TIF-target-1.png" width="1400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="www/TIF-first-1.png" width="1400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="www/TIF-second-1.png" width="1400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="www/TIF-third-1.png" width="1400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="ila-isa" class="slide level2">
 <h2>ILA &amp; ISA</h2>
 <p><img data-src="www/twins.jpg" class="absolute" style="top: 50px; right: 50px; width: 250px; height: 150px; "></p>
@@ -602,8 +679,10 @@ Ottavia M. Epifania &amp; Friends
 </font><p><font size="4"></font></p>
 </div></div>
 </section>
-<section id="frank" class="slide level2">
-<h2>Frank</h2>
+<section id="frank-i-solve-problems" class="slide level2">
+<h2>Frank (I solve problems)</h2>
+<p><span class="math inline">\(\theta\)</span>-targets are convenient but misleading: Look at the entire latent trait</p>
+<div class="fragment">
 <p><img data-src="www/mrwolf.jpg" class="absolute" style="top: 50px; right: 40px; width: 300px; height: 200px; "></p>
 <p>At <span class="math inline">\(k = 0\)</span>: <span class="math inline">\(TIF^0(\theta) = 0 \, \forall \theta\)</span>, <span class="math inline">\(Q^0 = \emptyset\)</span>. For <span class="math inline">\(k \geq 0\)</span>,</p>
 <ol type="1">
@@ -616,6 +695,7 @@ Ottavia M. Epifania &amp; Friends
 <li><p>FALSE, <span class="math inline">\(k = k + 1,\)</span> <span class="math inline">\(Q^{k+1} = Q^k \cup \{D\}\)</span>, iterates 1-4</p></li>
 <li><p>TRUE, stops, <span class="math inline">\(Q_{Frank} = Q^k\)</span></p></li>
 </ul>
+</div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -630,14 +710,40 @@ Ottavia M. Epifania &amp; Friends
 <h2>The careless error</h2>
 <p>Lower the upper asymptote as described by <span class="math inline">\(d\)</span>:</p>
 <p><span class="math display">\[P(x_{pi}= 1| \theta_p, b_i, a_i, c_i, d_i) = c_i + (d_i -c_i) \dfrac{\exp[a_i(\theta_p - b_i)]}{1 + \exp[a_i(\theta_p - b_i)]}\]</span> <span class="math inline">\(c_i\)</span>: Lower asymptote: When <span class="math inline">\(\theta \to -\infty\)</span>, <span class="math inline">\(P(x_{pi} = c_i)\)</span> (should be 0) <em>Lucky guess</em></p>
+<div class="fragment highlight-red">
 <p><span class="math inline">\(d_i\)</span>: Upper asymptote: When <span class="math inline">\(\theta \to +\infty\)</span>, <span class="math inline">\(P(x_{pi} = d_i)\)</span> (should be 1) <em>Careless error</em></p>
+</div>
+<div class="r-stack">
+<div class="fragment fade-in-then-out">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="information-function" class="slide level2">
 <h2>Information Function</h2>
 <p><span class="math inline">\(d\)</span> is a property related to rank of presentation <span class="math inline">\(r\)</span> of item <span class="math inline">\(i\)</span>: The longer the administration, the higher the probability of observing careless mistakes, the lower the asymptote <span class="math inline">\(d_r\)</span>:</p>
 <div class="fragment">
 <p>The <span class="math inline">\(\text{IIF}_i\)</span> accounts for the careless error:</p>
-<p><span class="math display">\[  \text{IIF}_{i}(r) = \dfrac{a_i^2[P(\theta)-c_i]^2[d_r - P(\theta)]^2}{(d_{r}-c_i)^2 P(\theta)Q(\theta)}\]</span></p>
+<p><span class="math display">\[  \text{IIF}_{i}(r) = \dfrac{a_i^2[P(\theta)-c_i]^2[d_r - P(\theta)]^2}{(d_{r}-c_i)^2 P(\theta)Q(\theta)}\]</span> <span class="math inline">\(r = \{0, 1, \ldots, ||B||\}\)</span></p>
 </div>
 </section>
 <section id="section-1" class="slide level2">
@@ -646,85 +752,22 @@ Ottavia M. Epifania &amp; Friends
 <iframe src="https://ottaviae.shinyapps.io/app-tired/?showcase=0" width="960" height="800px" data-external="1">
 </iframe>
 </div>
-<p>
-<script type="application/shiny-prerendered" data-context="server-start">
-library(knitr)
-library(shiny)
-library(ggplot2)
-library(tidyverse)
-library(emoji)
-hexes <- function(x) {
-  x <- rev(sort(x))
-  markup <- function(img) glue::glue('<img width="10%" height="10%" src="www/{img}.jpg" class="title-hex">')
-  res <- purrr::map_chr(x, markup)
-  paste0(res, collapse = "")
-}
-IRT <- function(theta, a = 1, b = 0, c = 0,e = 1) {
-  y <- c + (e - c) * exp(a * (theta - b)) / (1 + exp(a * (theta - b)))
-  return(y)
-}
-# calcola l'IIF per un item specifico
-i_info <- function(b, a=1,c=0, e= 1,  theta = seq(-5,5,length.out=1000)){
-  Ii = (a^2)*IRT(theta, b = b, a = a, e = e )*(1- IRT(theta, b = b, a = a, e = e ))
-  return(Ii)
-}
-# calcola l'IIF di tutti gli item e restituisce in una lista di lunghezza ugaule a tutti 
-# gli item per cui si è calcolata l'IIF
-item_info <- function(ipar, theta = seq(-5,5,length.out=1000)){
-  item <- NULL
-  if (any(colnames(ipar) == "e")) {
-    for(i in 1:nrow(ipar)){
-      item[[i]] <- i_info(b = ipar[i, "b"],a = ipar[i, "a"], e = ipar[i, "e"], theta = theta)
-    } 
-  } else {
-    for(i in 1:nrow(ipar)){
-      item[[i]] <- i_info(b = ipar[i, "b"],a = ipar[i, "a"], theta = theta)
-    }
-  }
-  item = data.frame(do.call("cbind", item))
-  colnames(item) = rownames(ipar)
-  return(item)
-}
-set.seed(999)
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server-extras">
-ojs_define <- function(..., .session = shiny::getDefaultReactiveDomain()) {
-  quos <- rlang::enquos(...)
-  vars <- rlang::list2(...)
-  nm <- names(vars)
-  if (is.null(nm)) {
-    nm <- rep_len("", length(vars))
-  }
-  mapply(function(q, nm, val) {
-    # Infer name, if possible
-    if (nm == "") {
-      tryCatch({
-        nm <- rlang::as_name(q)
-      }, error = function(e) {
-        code <- paste(collapse = "\n", deparse(rlang::f_rhs(q)))
-        stop("ojs_define() could not create a name for the argument: ", code)
-      })
-    }
-    .session$output[[nm]] <- val
-    outputOptions(.session$output, nm, suspendWhenHidden = FALSE)
-    .session$sendCustomMessage("ojs-export", list(name = nm))
-    NULL
-  }, quos, nm, vars, SIMPLIFY = FALSE, USE.NAMES = FALSE)
-  invisible()
-}
-</script>
-</p>
-<!--html_preserve-->
-<script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[]}
-</script>
-<!--/html_preserve-->
-<!--html_preserve-->
-<script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59]}},"value":[{"type":"character","attributes":{},"value":["base","cli","colorspace","compiler","datasets","digest","dplyr","emoji","evaluate","fastmap","forcats","generics","ggplot2","glue","graphics","grDevices","grid","gtable","hms","htmltools","httpuv","jsonlite","knitr","later","lifecycle","lubridate","magrittr","methods","mime","munsell","pillar","pkgconfig","png","promises","purrr","R6","Rcpp","readr","rlang","rmarkdown","rstudioapi","scales","shiny","stats","stringi","stringr","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tzdb","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["4.4.2","3.6.3","2.1-1","4.4.2","4.4.2","0.6.37","1.1.4","16.0.0","1.0.3","1.2.0","1.0.0","0.1.3","3.5.1","1.8.0","4.4.2","4.4.2","4.4.2","0.3.6","1.1.3","0.5.8.1","1.6.15","1.8.9","1.49","1.4.1","1.0.4","1.9.4","2.0.3","4.4.2","0.12","0.5.1","1.10.1","2.0.3","0.1-8","1.3.2","1.0.2","2.6.1","1.0.13-1","2.1.5","1.1.4","2.29","0.17.1","1.3.0","1.10.0","4.4.2","1.8.4","1.5.1","3.2.1","1.3.1","1.2.1","2.0.0","0.3.0","4.4.2","0.4.0","4.4.2","0.6.5","3.0.2","0.49","1.8-4","2.3.10"]}]}]}
-</script>
-<!--/html_preserve-->
+</section>
+<section id="léon-i-solve-problems-efficiently" class="slide level2">
+<h2>Léon (I solve problems <em>efficiently</em>)</h2>
+<p><img data-src="www/leon.jpg" class="absolute" style="top: 30px; right: 30px; width: 250px; height: 150px; "></p>
+<p>At <span class="math inline">\(k = 0\)</span>: <span class="math inline">\(\text{TIF}^0(\theta) = 0 \, \forall \theta\)</span>, <span class="math inline">\(Q^0 = \emptyset\)</span>.</p>
+<p>For <span class="math inline">\(k \geq 0\)</span>,</p>
+<ol type="1">
+<li><p><span class="math inline">\(A^k = B \setminus Q^k\)</span></p></li>
+<li><p><span class="math inline">\(\forall i \in A^k\)</span>, <span class="math inline">\(p\text{TIF}_{i}^k = \frac{\text{TIF}^k + \text{IIF}_{i}}{||Q^k||+1}\)</span>, with <span class="math inline">\(r = \{0, 1, \ldots, ||Q^k||-1\}\)</span></p></li>
+<li><p><span class="math inline">\(i^* = \arg \min_{i \in A^k} (|\text{TIF}_B - \text{pTIF}_i^k|)\)</span></p></li>
+<li><p>Termination criterion: <span class="math inline">\(|\text{TIF}_B - \text{pTIF}_{i^*}^k| \geq |\text{TIF}_B - \text{TIF}^{k}|\)</span>:</p>
+<ul>
+<li><p>FALSE: <span class="math inline">\(Q^{k+1} = Q^{k} \cup \{i^*\}\)</span>, <span class="math inline">\(\text{TIF}^{k+1} = p\text{TIF}_{i^*}\)</span>, iterates 1-4</p></li>
+<li><p>TRUE: Stop, <span class="math inline">\(Q_{\text{Léon}} = Q^k\)</span></p></li>
+</ul></li>
+</ol>
 <div class="quarto-auto-generated-content">
 <p><img src="www/psicostat.jpg" class="slide-logo"></p>
 <div class="footer footer-default">

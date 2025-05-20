@@ -5,6 +5,6 @@ account: ottaviae
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 14760864
-bundleId: 10288014
+bundleId: 10311988
 url: https://ottaviae.shinyapps.io/app-tired/
 version: 1
