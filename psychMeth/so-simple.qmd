@@ -1,0 +1,92 @@
+---
+title: "So simple, yet so effective"
+author: "Ottavia M. Epifania"
+format:
+  beamer:
+    toc: true
+    slide-level: 3
+    theme: Montpellier
+    colortheme: dove
+    innertheme: rounded
+    navigation: horizontal
+    highlight-style: tango
+header-includes:
+    # - \usetheme[compressed]{Singapore}
+    - \usepackage{graphicx} 
+    - \usepackage{setspace}
+    - \usepackage{tabularx}
+    - \usepackage[english]{babel}
+    - \usepackage{tikzsymbols}
+    - \usepackage{subcaption}
+    - \usepackage{tikz}
+    - \usepackage[absolute,overlay]{textpos}
+    - \usepackage{spot}
+    - \usepackage{tabularx}
+    - \usepackage[absolute,overlay]{textpos}
+    - \usepackage{booktabs}
+    - \setbeamertemplate{navigation symbols}{}
+    - \newcommand\Factor{1.2}
+    - \setbeamerfont{subtitle}{size=\large, series=\bfseries}
+    - \setbeamercolor{frametitle}{bg=background}
+    - \setbeamertemplate{frametitle}{\color{template}\bfseries\insertframetitle\par\vskip-6pt\hrulefill}
+    - \definecolor{template}{RGB}{204 204 204}
+    - \definecolor{latenti}{RGB}{54, 114, 89}
+    - \definecolor{manifeste}{RGB}{179, 7, 27}
+    - \definecolor{background}{RGB}{251, 251, 251}
+    - \definecolor{highlight}{RGB}{18, 10, 143}
+    - \definecolor{giallo}{RGB}{204 204 204}
+    - \definecolor{blu}{RGB}{177 11 37}
+    - \setbeamercolor{frametitle}{bg=background}
+    - \setbeamercolor{frametitle}{fg=blu, bg = white}
+    - \setbeamercolor{title}{bg = white, fg=blu}
+    # - \setbeamercolor{author in head/foot}{bg=blu, fg=white}
+    # - \setbeamercolor{title in head/foot}{bg=blu!40, fg=blu}
+    # - \setbeamercolor{date in head/foot}{bg=blu!20, fg=blu}
+    - \setbeamercolor{item}{fg=giallo}
+    - \setbeamercolor{caption name}{fg=blu}
+    - \setbeamercolor{section name}{fg=white}
+    - \setbeamercolor{subsection name}{fg=white}
+    - \setbeamersize{text margin left=5mm,text margin right=5mm} 
+    - \def\tikzoverlay{\tikz[remember picture, overlay]\node[every overlay node]}
+    - \definecolor{person}{RGB}{33, 113, 181}
+    - \definecolor{question}{RGB}{181, 102, 33}
+    - \newcommand*{\sbj}[1]{\textcolor{person}{#1}}
+    - \newcommand*{\colit}[1]{\textcolor{question}{#1}}
+    - \newcommand*{\high}[1]{\textcolor{highlight}{#1}}
+    - \AtBeginSection[]
+          {
+             \begin{frame}[plain]
+             \tableofcontents[currentsection,currentsubsection]
+              \end{frame}
+          }
+    - \AtBeginSubsection[]  
+          {
+             \begin{frame}[plain]
+             \tableofcontents[currentsection,currentsubsection]
+              \end{frame}
+          }
+editor_options: 
+  chunk_output_type: console
+---
+
+# Introduction 
+
+## Experiments with fully-crossed structures
+
+### SNARC
+
+Parti co l'esempio dove ci sono jane and john doe che devono fare lo snarc, presento gli stimoli e il compito 
+	
+	
+per presentare il cmpito: lo stimolo 2,4,6,7,9 viene presentato in una condizione detta compatibile, jane deve dire se è un numero grande o piccolo premendo il tasto sul pc 
+	
+stessa cosa ma nella condizione incompatibile 
+	
+### Scoring 
+
+### 
+
+La figurina della struttura crossed
+	
+
+

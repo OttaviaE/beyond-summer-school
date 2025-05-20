@@ -580,9 +580,46 @@ At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \ge
 
   - TRUE, stops, $Q_{Frank} = Q^k$
 
-## 
+## Simulation time
 
-Immagino qualche risultato? Il percentile? lo studio di simulazione? BOH
+::: {.panel-tabset}
+
+## Simulation design
+
+100 replications:
+
+1. Generate an item bank $B$ of $11$ items: 
+        
+      - Difficulty parameters: $\mathcal{U}(-3, 3)$
+        
+      - Discrimination parameters:  $\mathcal{U}(.90, 2.0)$
+		 
+2. Random item selections of lengths $l$ from $B$ ($M_l = 5.01 \pm 2.99$) + randomly drawn values $\mathcal{U}(-0.20, 0.20)$ $\rightarrow$ $TIF^*$ 
+		
+3. Considering $TIF^*$ at Step 2 and item parameters at Step 1:
+
+      - Bruto  $\rightarrow$ Systematically tests
+      
+      - ILA/ISA  $\rightarrow$ Forwardly searches considering a single $\theta$
+      - Frank $\rightarrow$ Forwardly searches considering the whole latent trait 		
+
+## Comparisons criteria 
+
+- Computational Time & Successful attempts
+
+- Percentile rank of $Q_x, x \in \{\text{ILA}, \text{ISA}, \text{Frank}\}$:  $\forall (Q, Q') \in \mathcal{Q}, Q \preceq Q' \Rightarrow mean(|TIF^* - TIF_Q| \leq |TIF^* - TIF_{Q'}|)$ 
+</br>
+
+- Symmetric distance: $Q_x \Delta Q_{Bruto} = ||\{(Q_x \setminus Q_{Bruto}) \cup (Q_{Bruto} \setminus Q_{x}) \}||$  
+
+<!-- - Accuracy: $||\{(Q_x \cap Q_{bruto}) \cup B \setminus (Q_x \cup Q_{bruto})\}||/ ||B||$ -->
+
+<!-- - Specificity:  $||\{B \setminus (Q_x \cup Q_{bruto})\}||/||\{B \setminus Q_{Bruto}\}||$ -->
+
+<!-- - Sensitivity: $||\{Q_x \cap Q_{Bruto}\}||/ ||Q_{bruto}||$ -->
+
+:::
+
 
 # Response fatigue 
 
