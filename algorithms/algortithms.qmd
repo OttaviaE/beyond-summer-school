@@ -41,6 +41,7 @@ library(shiny)
 library(ggplot2)
 library(tidyverse)
 library(emoji)
+library(wesanderson)
 hexes <- function(x) {
   x <- rev(sort(x))
   markup <- function(img) glue::glue('<img width="10%" height="10%" src="www/{img}.jpg" class="title-hex">')
@@ -432,7 +433,7 @@ $Q_{bruto} = \arg \min_{Q \in \mathcal{Q}} \overline{\Delta}_{TIF^{Q}}$
 
 . . . 
 
-It is "doomed" to find the best combination of items 
+It is "doomed" to find the best combination of items `r emoji("1st_place_medal")`
 
 ## In general 
 
@@ -539,7 +540,6 @@ ISA
 <font size="4">
 At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \geq 0$,
 
-
 1. $\theta_{target} := \arg \max |TIF^* - TIF^{k}|$
 
 ::: {.fragment .highlight-red}
@@ -605,21 +605,89 @@ At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \ge
 
 ## Comparisons criteria 
 
-- Computational Time & Successful attempts
 
-- Percentile rank of $Q_x, x \in \{\text{ILA}, \text{ISA}, \text{Frank}\}$:  $\forall (Q, Q') \in \mathcal{Q}, Q \preceq Q' \Rightarrow mean(|TIF^* - TIF_Q| \leq |TIF^* - TIF_{Q'}|)$ 
-</br>
+$Q_{\text{Bruto}}$ is the item selection that gets closer to the $\text{TIF}^*$: `r emoji("1st_place_medal")`
 
-- Symmetric distance: $Q_x \Delta Q_{Bruto} = ||\{(Q_x \setminus Q_{Bruto}) \cup (Q_{Bruto} \setminus Q_{x}) \}||$  
+1. Successful attempts: Did the algorithm find an item combination able to approximate the  $\text{TIF}^*$ without running out of items in $B$? 
 
-<!-- - Accuracy: $||\{(Q_x \cap Q_{bruto}) \cup B \setminus (Q_x \cup Q_{bruto})\}||/ ||B||$ -->
+2. Percentile rank: How close to the $\text{TIF}^*$ are $Q_x$, with $x \in \{\text{ILA}, \text{ISA}, \text{Frank}\}$, with respect to $Q_{\text{Bruto}}$?  
 
-<!-- - Specificity:  $||\{B \setminus (Q_x \cup Q_{bruto})\}||/||\{B \setminus Q_{Bruto}\}||$ -->
+> $Q_x \subseteq \mathcal{Q}$,  and   $\forall (Q, Q') \in \mathcal{Q}, Q \preceq Q' \Rightarrow mean(|TIF^* - TIF_Q| \leq |TIF^* - TIF_{Q'}|)$ 
 
-<!-- - Sensitivity: $||\{Q_x \cap Q_{Bruto}\}||/ ||Q_{bruto}||$ -->
-
+3. Symmetric distance: Do $x$ and Bruto agree on the items to include in STF? $Q_x \Delta Q_{Bruto} = ||\{(Q_x \setminus Q_{Bruto}) \cup (Q_{Bruto} \setminus Q_{x}) \}||$  
 :::
 
+## Results 
+
+::: {.panel-tabset}
+
+## Successfull attempts
+
+```{r}
+load("summary-comparison.RData")
+library(ggplot2)
+library(wesanderson)
+ggplot(elapsed[!elapsed$name %in% "bruto_elapsed", ], 
+       aes(x = name, y = value, color = name)) + geom_boxplot() + theme_light() + 
+  ylab("Elapsed Time (Minutes") +
+  theme(legend.position = "none", 
+        axis.title.y = element_text(size = 24), 
+        axis.text = element_text(size = 22), 
+        axis.title.x = element_blank())+ 
+    scale_x_discrete(labels = c("Frank \n 100%", "ILA \n 93%", "ISA \n 82%")) + 
+  scale_color_manual(values = wes_palette("AsteroidCity3"))
+```
+Bruto elapsed time: $10.77 \pm 0.29$
+
+## Percentile ranks
+
+```{r}
+ggplot(all_ranks, 
+       aes(x = reorder(iter, rp), 
+           y = rp, 
+           color = alorigthm, shape = alorigthm)) + geom_point(size = 3) + theme_bw() +
+  scale_color_manual(values = wes_palette("AsteroidCity3"), 
+                     labels = c("Frank", "ILA", "ISA")) + xlab("Replication") + ylab("Percentile Rank") +
+  scale_shape_manual(values = c(15, 17, 19), labels = c("Frank", "ILA", "ISA")) +
+  theme(legend.position = "bottom", 
+        legend.title = element_blank(), 
+        axis.text.x = element_blank(), 
+        axis.text.y = element_text(size = 22), 
+        axis.title = element_text(size = 24), 
+        legend.text = element_text(size = 22)) +
+  guides(shape = guide_legend(override.aes = list(size = 5))) + 
+  geom_hline(yintercept = 10, linetype = 2, linewidth = 1, color = "darkgray") +
+  geom_hline(yintercept = 50, linetype = 2, linewidth = 1, color = "darkgray")
+```
+
+
+## Symmetric Distance
+
+```{r}
+
+long_dist = pivot_longer(the_distances[, c("replica", "ila_d", "isa_d", "frank_d")], 
+                         cols = !replica)
+
+my = long_dist %>%  
+  group_by(name, value) %>%  
+  summarise(n = n())
+
+# ggplot(my, 
+#        aes(x = factor(value), y = n, fill = name)) + geom_bar(stat = "identity", position = position_dodge(width = 0.5)) 
+
+ggplot(long_dist, 
+       aes(x = factor(name), y = value, color = name)) + geom_boxplot(width=.5) + theme_bw() +ylab("Symmetric Distance") + 
+  scale_color_manual(values = wes_palette("AsteroidCity3"), 
+                     labels = c("Frank", "ILA", "ISA")) + 
+    scale_x_discrete(labels = c("Frank", "ILA", "ISA")) + 
+  theme(legend.position = "none", 
+        axis.text = element_text(size = 22), 
+        axis.title.y = element_text(size = 24), 
+        axis.title.x = element_blank())
+```
+
+
+:::
 
 # Response fatigue 
 

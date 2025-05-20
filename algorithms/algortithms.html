@@ -570,7 +570,7 @@ Ottavia M. Epifania &amp; Friends
 </ol>
 <p><span class="math inline">\(Q_{bruto} = \arg \min_{Q \in \mathcal{Q}} \overline{\Delta}_{TIF^{Q}}\)</span></p>
 <div class="fragment">
-<p>It is “doomed” to find the best combination of items</p>
+<p>It is “doomed” to find the best combination of items 🥇</p>
 </div>
 </section>
 <section id="in-general-1" class="slide level2">
@@ -697,9 +697,86 @@ Ottavia M. Epifania &amp; Friends
 </ul>
 </div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<p>Immagino qualche risultato? Il percentile? lo studio di simulazione? BOH</p>
+<section id="simulation-time" class="slide level2">
+<h2>Simulation time</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Simulation design</a></li><li><a href="#tabset-2-2">Comparisons criteria</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>100 replications:</p>
+<ol type="1">
+<li><p>Generate an item bank <span class="math inline">\(B\)</span> of <span class="math inline">\(11\)</span> items:</p>
+<ul>
+<li><p>Difficulty parameters: <span class="math inline">\(\mathcal{U}(-3, 3)\)</span></p></li>
+<li><p>Discrimination parameters: <span class="math inline">\(\mathcal{U}(.90, 2.0)\)</span></p></li>
+</ul></li>
+<li><p>Random item selections of lengths <span class="math inline">\(l\)</span> from <span class="math inline">\(B\)</span> (<span class="math inline">\(M_l = 5.01 \pm 2.99\)</span>) + randomly drawn values <span class="math inline">\(\mathcal{U}(-0.20, 0.20)\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(TIF^*\)</span></p></li>
+<li><p>Considering <span class="math inline">\(TIF^*\)</span> at Step 2 and item parameters at Step 1:</p>
+<ul>
+<li><p>Bruto <span class="math inline">\(\rightarrow\)</span> Systematically tests</p></li>
+<li><p>ILA/ISA <span class="math inline">\(\rightarrow\)</span> Forwardly searches considering a single <span class="math inline">\(\theta\)</span></p></li>
+<li><p>Frank <span class="math inline">\(\rightarrow\)</span> Forwardly searches considering the whole latent trait</p></li>
+</ul></li>
+</ol>
+</div>
+<div id="tabset-2-2">
+<p><span class="math inline">\(Q_{\text{Bruto}}\)</span> is the item selection that gets closer to the <span class="math inline">\(\text{TIF}^*\)</span>: 🥇</p>
+<ol type="1">
+<li><p>Successful attempts: Did the algorithm find an item combination able to approximate the <span class="math inline">\(\text{TIF}^*\)</span> without running out of items in <span class="math inline">\(B\)</span>?</p></li>
+<li><p>Percentile rank: How close to the <span class="math inline">\(\text{TIF}^*\)</span> are <span class="math inline">\(Q_x\)</span>, with <span class="math inline">\(x \in \{\text{ILA}, \text{ISA}, \text{Frank}\}\)</span>, with respect to <span class="math inline">\(Q_{\text{Bruto}}\)</span>?</p></li>
+</ol>
+<blockquote>
+<p><span class="math inline">\(Q_x \subseteq \mathcal{Q}\)</span>, and <span class="math inline">\(\forall (Q, Q') \in \mathcal{Q}, Q \preceq Q' \Rightarrow mean(|TIF^* - TIF_Q| \leq |TIF^* - TIF_{Q'}|)\)</span></p>
+</blockquote>
+<ol start="3" type="1">
+<li>Symmetric distance: Do <span class="math inline">\(x\)</span> and Bruto agree on the items to include in STF? <span class="math inline">\(Q_x \Delta Q_{Bruto} = ||\{(Q_x \setminus Q_{Bruto}) \cup (Q_{Bruto} \setminus Q_{x}) \}||\)</span><br>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="results" class="slide level2">
+<h2>Results</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Successfull attempts</a></li><li><a href="#tabset-3-2">Percentile ranks</a></li><li><a href="#tabset-3-3">Symmetric Distance</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Bruto elapsed time: <span class="math inline">\(10.77 \pm 0.29\)</span></p>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="response-fatigue" class="title-slide slide level1 center">
@@ -719,7 +796,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -730,7 +807,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -746,7 +823,7 @@ Ottavia M. Epifania &amp; Friends
 <p><span class="math display">\[  \text{IIF}_{i}(r) = \dfrac{a_i^2[P(\theta)-c_i]^2[d_r - P(\theta)]^2}{(d_{r}-c_i)^2 P(\theta)Q(\theta)}\]</span> <span class="math inline">\(r = \{0, 1, \ldots, ||B||\}\)</span></p>
 </div>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section" class="slide level2">
 <h2></h2>
 <div class="cell">
 <iframe src="https://ottaviae.shinyapps.io/app-tired/?showcase=0" width="960" height="800px" data-external="1">
