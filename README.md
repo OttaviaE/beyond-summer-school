@@ -6,5 +6,5 @@
 
 ## L'altra cosa
 
-metterò le slide 
+[other slides](psychMeth/so-simple.pdf)
 
