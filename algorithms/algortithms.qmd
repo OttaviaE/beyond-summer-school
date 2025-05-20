@@ -7,7 +7,8 @@ format:
     theme: mytheme.scss
     logo: "www/psicostat.jpg"
     footer: "Beyond summer school @ DiPSCo"
-    transition: slide
+    transition: fade
+    transition-speed: slow
     background-transition: fade
 # background-opacity: "0.45"
 #    data-background-size: 400px, cover
@@ -476,7 +477,7 @@ knitr::include_graphics("www/TIF-second-1.png")
 
 
 
-### $k = 3$
+### $k = 3$, stop!
 
 ```{r}
 knitr::include_graphics("www/TIF-third-1.png")
@@ -559,11 +560,12 @@ At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \ge
 
 ## Frank (I solve problems)
 
-$\theta$-targets are convenient but misleading: Look at the entire latent trait
+![](www/mrwolf.jpg){.absolute top=50 right=40 width="250" height="150"}
+
+$\theta$-targets are convenient but misleading
 
 . . .
 
-![](www/mrwolf.jpg){.absolute top=50 right=40 width="300" height="200"}
 
 At $k = 0$: $TIF^0(\theta) = 0 \, \forall \theta$, $Q^0 = \emptyset$. For $k \geq 0$,
 
@@ -635,7 +637,7 @@ ggplot(elapsed[!elapsed$name %in% "bruto_elapsed", ],
         axis.text = element_text(size = 22), 
         axis.title.x = element_blank())+ 
     scale_x_discrete(labels = c("Frank \n 100%", "ILA \n 93%", "ISA \n 82%")) + 
-  scale_color_manual(values = wes_palette("AsteroidCity3"))
+  scale_color_manual(values = wes_palette("AsteroidCity1"))
 ```
 Bruto elapsed time: $10.77 \pm 0.29$
 
@@ -646,7 +648,7 @@ ggplot(all_ranks,
        aes(x = reorder(iter, rp), 
            y = rp, 
            color = alorigthm, shape = alorigthm)) + geom_point(size = 3) + theme_bw() +
-  scale_color_manual(values = wes_palette("AsteroidCity3"), 
+  scale_color_manual(values = wes_palette("AsteroidCity1"), 
                      labels = c("Frank", "ILA", "ISA")) + xlab("Replication") + ylab("Percentile Rank") +
   scale_shape_manual(values = c(15, 17, 19), labels = c("Frank", "ILA", "ISA")) +
   theme(legend.position = "bottom", 
@@ -677,7 +679,7 @@ my = long_dist %>%
 
 ggplot(long_dist, 
        aes(x = factor(name), y = value, color = name)) + geom_boxplot(width=.5) + theme_bw() +ylab("Symmetric Distance") + 
-  scale_color_manual(values = wes_palette("AsteroidCity3"), 
+  scale_color_manual(values = wes_palette("AsteroidCity1"), 
                      labels = c("Frank", "ILA", "ISA")) + 
     scale_x_discrete(labels = c("Frank", "ILA", "ISA")) + 
   theme(legend.position = "none", 
@@ -789,3 +791,133 @@ For $k \geq 0$,
 		
 	- TRUE: Stop, 
 		$Q_{\text{Léon}} = Q^k$
+
+
+## Simulation time
+
+::: {.panel-tabset}
+
+## Simulation design
+
+100 replications, item bank of 50 items:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+$B$:
+
+<font size="5">
+
+- $b \sim \mathcal{U}(-3, 3)$
+        
+- $a \sim \mathcal{U}(.90, 2.0)$
+
+- $c_i = 0$, $\forall i \in B$
+      
+- $d_i = 1$, $\forall i \in B$
+
+</font>
+:::
+
+::: {.column width="50%"}
+
+$B'$:
+
+<font size="5">
+
+- $b_i' = b_i$
+        
+- $a_i' = b_i$
+
+- $c_i = 0$, $\forall i \in B'$
+      
+- $d_r = \exp(-0.01 r)$, with $r = \{0, \ldots, ||B|| -1\}$
+      
+</font>
+:::
+
+::::
+        
+2. $\text{TIF}^* = \text{TIF}_B = \sum_{i = 1}^{||B||} \frac{\text{IIF}_i}{||B||}$ `r emoji("1st_place_medal")`
+
+3. Considering $TIF^*$: 
+
+      - Frank:  STF from $B$
+      
+      - Léon: STF from $B'$
+
+## Comparisons criteria 
+
+1. Distance from $\text{TIF}^*$: $\Delta_x = |\text{TIF}_B - \text{TIF}_{x}|$, with $x \in \{B', \text{Frank}, \text{Léon}\}$
+
+2. Number of items selected by Frank and Léon 
+
+:::
+
+## Results
+
+::: {.panel-tabset}
+
+## Distance 
+
+```{r}
+rm(list=ls())
+load("sis-2025-simulation.RData")
+mycolor = c(wes_palette("Royal1", n =1), 
+            wes_palette("AsteroidCity1", n =1),
+           wes_palette("Darjeeling2", n =2)[2]  )
+ggplot(res_tot, 
+       aes(x = type, y = difference, color = type)) + 
+  geom_boxplot() + 
+  theme_light() + ylab(expression(paste("|", TIF[B], " - ",TIF[x], "|"))) + 
+  scale_x_discrete(labels = c(expression(paste("B","'")), "Frank", "Léon")) +
+  theme(axis.text = element_text(size = 22), 
+        axis.title.y = element_text(size = 24), 
+        axis.title.x = element_blank(), 
+        legend.position = "none") + 
+  scale_color_manual(values = mycolor)
+
+```
+
+
+## Number of items
+
+```{r}
+long_num = pivot_longer(numberItems, 
+                        cols = !iteration)
+ggplot(long_num, 
+       aes(x = name, y = value, color = name)) + geom_boxplot() + 
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color=mycolor[2:3], fill=mycolor[2:3]) + 
+  theme_light() + ylab("Number of items") + 
+  scale_x_discrete(labels = c("Frank", "Léon")) +
+  theme(axis.text = element_text(size = 22), 
+        axis.title.y = element_text(size = 24), 
+        axis.title.x = element_blank(), 
+        legend.position = "none") + 
+  scale_color_manual(values = mycolor[2:3])
+
+```
+
+:::
+
+# In the end 
+
+## 
+
+Boh mi verrà qualcosa in mente 
+
+<br>
+
+<br>
+
+. . . 
+
+::: {.callout-tip}
+## La scienza è uno sforzo *collettivo*
+
+Pasquale Anselmi, Egidio Robusto, Livio Finos, Gianmarco Altoè, Luigi Lombardi
+
+:::
+
+

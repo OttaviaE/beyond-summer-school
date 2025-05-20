@@ -580,7 +580,7 @@ Ottavia M. Epifania &amp; Friends
 <section id="item-locating-algorithm-ila" class="slide level2">
 <h2>Item Locating Algorithm – ILA</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">TIF Target, <span class="math inline">\(k = 0\)</span></a></li><li><a href="#tabset-1-2"><span class="math inline">\(k = 1\)</span></a></li><li><a href="#tabset-1-3"><span class="math inline">\(k = 2\)</span></a></li><li><a href="#tabset-1-4"><span class="math inline">\(k = 3\)</span></a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">TIF Target, <span class="math inline">\(k = 0\)</span></a></li><li><a href="#tabset-1-2"><span class="math inline">\(k = 1\)</span></a></li><li><a href="#tabset-1-3"><span class="math inline">\(k = 2\)</span></a></li><li><a href="#tabset-1-4"><span class="math inline">\(k = 3\)</span>, stop!</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
@@ -681,9 +681,9 @@ Ottavia M. Epifania &amp; Friends
 </section>
 <section id="frank-i-solve-problems" class="slide level2">
 <h2>Frank (I solve problems)</h2>
-<p><span class="math inline">\(\theta\)</span>-targets are convenient but misleading: Look at the entire latent trait</p>
+<p><img data-src="www/mrwolf.jpg" class="absolute" style="top: 50px; right: 40px; width: 250px; height: 150px; "></p>
+<p><span class="math inline">\(\theta\)</span>-targets are convenient but misleading</p>
 <div class="fragment">
-<p><img data-src="www/mrwolf.jpg" class="absolute" style="top: 50px; right: 40px; width: 300px; height: 200px; "></p>
 <p>At <span class="math inline">\(k = 0\)</span>: <span class="math inline">\(TIF^0(\theta) = 0 \, \forall \theta\)</span>, <span class="math inline">\(Q^0 = \emptyset\)</span>. For <span class="math inline">\(k \geq 0\)</span>,</p>
 <ol type="1">
 <li><p><span class="math inline">\(A^k = B \setminus Q^k\)</span></p></li>
@@ -845,10 +845,113 @@ Ottavia M. Epifania &amp; Friends
 <li><p>TRUE: Stop, <span class="math inline">\(Q_{\text{Léon}} = Q^k\)</span></p></li>
 </ul></li>
 </ol>
+</section>
+<section id="simulation-time-1" class="slide level2">
+<h2>Simulation time</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Simulation design</a></li><li><a href="#tabset-4-2">Comparisons criteria</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p>100 replications, item bank of 50 items:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(B\)</span>:</p>
+<p><font size="5"></font></p><font size="5">
+<ul>
+<li><p><span class="math inline">\(b \sim \mathcal{U}(-3, 3)\)</span></p></li>
+<li><p><span class="math inline">\(a \sim \mathcal{U}(.90, 2.0)\)</span></p></li>
+<li><p><span class="math inline">\(c_i = 0\)</span>, <span class="math inline">\(\forall i \in B\)</span></p></li>
+<li><p><span class="math inline">\(d_i = 1\)</span>, <span class="math inline">\(\forall i \in B\)</span></p></li>
+</ul>
+</font><p><font size="5"></font></p>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(B'\)</span>:</p>
+<p><font size="5"></font></p><font size="5">
+<ul>
+<li><p><span class="math inline">\(b_i' = b_i\)</span></p></li>
+<li><p><span class="math inline">\(a_i' = b_i\)</span></p></li>
+<li><p><span class="math inline">\(c_i = 0\)</span>, <span class="math inline">\(\forall i \in B'\)</span></p></li>
+<li><p><span class="math inline">\(d_r = \exp(-0.01 r)\)</span>, with <span class="math inline">\(r = \{0, \ldots, ||B|| -1\}\)</span></p></li>
+</ul>
+</font><p><font size="5"></font></p>
+</div></div>
+<ol start="2" type="1">
+<li><p><span class="math inline">\(\text{TIF}^* = \text{TIF}_B = \sum_{i = 1}^{||B||} \frac{\text{IIF}_i}{||B||}\)</span> 🥇</p></li>
+<li><p>Considering <span class="math inline">\(TIF^*\)</span>:</p>
+<ul>
+<li><p>Frank: STF from <span class="math inline">\(B\)</span></p></li>
+<li><p>Léon: STF from <span class="math inline">\(B'\)</span></p></li>
+</ul></li>
+</ol>
+</div>
+<div id="tabset-4-2">
+<ol type="1">
+<li><p>Distance from <span class="math inline">\(\text{TIF}^*\)</span>: <span class="math inline">\(\Delta_x = |\text{TIF}_B - \text{TIF}_{x}|\)</span>, with <span class="math inline">\(x \in \{B', \text{Frank}, \text{Léon}\}\)</span></p></li>
+<li><p>Number of items selected by Frank and Léon</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="results-1" class="slide level2">
+<h2>Results</h2>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Distance</a></li><li><a href="#tabset-5-2">Number of items</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="in-the-end" class="title-slide slide level1 center">
+<h1>In the end</h1>
+
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>Boh mi verrà qualcosa in mente</p>
+<p><br></p>
+<p><br></p>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>La scienza è uno sforzo <em>collettivo</em></strong></p>
+</div>
+<div class="callout-content">
+<p>Pasquale Anselmi, Egidio Robusto, Livio Finos, Gianmarco Altoè, Luigi Lombardi</p>
+</div>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <p><img src="www/psicostat.jpg" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>Beyond summer school @ DiPSCo</p>
+</div>
 </div>
 </div>
 </section></section>
@@ -1008,10 +1111,10 @@ Ottavia M. Epifania &amp; Friends
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
+        transitionSpeed: 'slow',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
