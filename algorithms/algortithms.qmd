@@ -373,6 +373,18 @@ Being focused on the item information and on the ability of each item to measure
 
 :::
 
+## Automated Test Assembly
+
+Works on the definition of the desired characteristics that the STF should have in the form of *target information function*: 
+
+- Absolute Information: Both the shape (the shape) and the height (amount of information) are defined 
+
+> minmax algorithm: minimize the maximum distance between the target information function and the information function of the STF
+
+- Relative Information: Only the shape is defined through the definition of discrete latent trait levels of interest for which the information needs to be maximized
+
+> maxmin algorithm: maximize the minimum information for the defined levels of the latent trait
+
 # New algorithms
 
 ## Some premises 
@@ -623,7 +635,7 @@ $Q_{\text{Bruto}}$ is the item selection that gets closer to the $\text{TIF}^*$:
 
 ::: {.panel-tabset}
 
-## Successfull attempts
+## Success
 
 ```{r}
 load("summary-comparison.RData")
@@ -641,7 +653,7 @@ ggplot(elapsed[!elapsed$name %in% "bruto_elapsed", ],
 ```
 Bruto elapsed time: $10.77 \pm 0.29$
 
-## Percentile ranks
+## Ranks
 
 ```{r}
 ggplot(all_ranks, 
@@ -663,7 +675,8 @@ ggplot(all_ranks,
 ```
 
 
-## Symmetric Distance
+## Distances
+
 
 ```{r}
 
@@ -678,7 +691,9 @@ my = long_dist %>%
 #        aes(x = factor(value), y = n, fill = name)) + geom_bar(stat = "identity", position = position_dodge(width = 0.5)) 
 
 ggplot(long_dist, 
-       aes(x = factor(name), y = value, color = name)) + geom_boxplot(width=.5) + theme_bw() +ylab("Symmetric Distance") + 
+       aes(x = factor(name), y = value, color = name)) + geom_boxplot(width=.5) + theme_bw() +
+  ylab("Symmetric Distance") + 
+  stat_summary(fun.y=mean, geom="point") +
   scale_color_manual(values = wes_palette("AsteroidCity1"), 
                      labels = c("Frank", "ILA", "ISA")) + 
     scale_x_discrete(labels = c("Frank", "ILA", "ISA")) + 
@@ -686,7 +701,35 @@ ggplot(long_dist,
         axis.text = element_text(size = 22), 
         axis.title.y = element_text(size = 24), 
         axis.title.x = element_blank())
+
 ```
+## More Distances
+
+```{r}
+#| warning: false
+my = apply(the_distances[,3:ncol(the_distances)], 2, table)
+my_dfs <- lapply(my, function(x) {
+  data.frame(distance = as.numeric(names(x)), freq = as.numeric(x))
+})
+my_dfs_named <- Map(function(df, name) {
+  names(df)[2] <- name
+  df
+}, my_dfs, names(my_dfs))
+
+# Merge all dataframes on 'distance' using Reduce
+final_df <- Reduce(function(x, y) merge(x, y, by = "distance", all = TRUE), my_dfs_named)
+
+freq_distance = pivot_longer(final_df, cols = !distance)
+cs = freq_distance %>%  
+  group_by(distance, name) %>% 
+  summarize(cs = cumsum(value/82))
+
+ggplot(cs, aes(x =  factor(distance), y = cs, color = name, group = name)) + geom_line(linewidth=1.2) + xlab("Symmetric Distance") + ylab("Cumulative Relative Frequency") + theme_bw() +  ylim(0,1) + scale_color_manual(values = wes_palette("AsteroidCity1"), 
+                     labels = c("Frank", "ILA", "ISA")) + 
+  theme(legend.position = "bottom", 
+        legend.title = element_blank())
+```
+
 
 
 :::
