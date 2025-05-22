@@ -419,7 +419,7 @@ Ottavia M. Epifania &amp; Friends
 </div>
 </div>
 </div>
-<div class="fragment fade-up">
+<div class="fragment fade-in">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -595,55 +595,74 @@ Ottavia M. Epifania &amp; Friends
 <img data-src="www/str-algo.png" class="quarto-figure quarto-figure-center r-stretch" width="348"></section>
 <section id="item-locating-algorithm-ila" class="slide level2">
 <h2>Item Locating Algorithm – ILA</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">TIF Target, <span class="math inline">\(k = 0\)</span></a></li><li><a href="#tabset-1-2"><span class="math inline">\(k = 1\)</span></a></li><li><a href="#tabset-1-3"><span class="math inline">\(k = 2\)</span></a></li><li><a href="#tabset-1-4"><span class="math inline">\(k = 3\)</span>, stop!</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="cell">
+<div class="r-stack">
+<div class="fragment fade-in-then-out">
+<div class="cell fig-cap-location-top">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="www/TIF-target-1.png" width="1400"></p>
+<figcaption>TIF Target, <span class="math inline">\(k = 0\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-1-2">
-<div class="cell">
+<div class="fragment fade-in-then-out">
+<div class="cell fig-cap-location-top">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="www/TIF-first-1.png" width="1400"></p>
+<figcaption><span class="math inline">\(k = 1\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-1-3">
-<div class="cell">
+<div class="fragment fade-in-then-out">
+<div class="cell fig-cap-location-top">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="www/TIF-second-1.png" width="1400"></p>
+<figcaption><span class="math inline">\(k = 2\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-1-4">
-<div class="cell">
+<div class="fragment fade-in-then-out">
+<div class="cell fig-cap-location-top">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="www/TIF-third-1.png" width="1400"></p>
+<figcaption><span class="math inline">\(k = 3, stop!\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
+<!-- ::: {.panel-tabset} -->
+<!-- ### TIF Target, $k = 0$ -->
+<!-- ```{r} -->
+<!-- knitr::include_graphics("www/TIF-target-1.png") -->
+<!-- ``` -->
+<!-- ### $k = 1$ -->
+<!-- ```{r} -->
+<!-- knitr::include_graphics("www/TIF-first-1.png") -->
+<!-- ``` -->
+<!-- ### $k = 2$ -->
+<!-- ```{r} -->
+<!-- knitr::include_graphics("www/TIF-second-1.png") -->
+<!-- ``` -->
+<!-- ### $k = 3$, stop! -->
+<!-- ```{r} -->
+<!-- knitr::include_graphics("www/TIF-third-1.png") -->
+<!-- ``` -->
+<!-- ::: -->
 </section>
 <section id="ila-isa" class="slide level2">
 <h2>ILA &amp; ISA</h2>
@@ -716,9 +735,9 @@ Ottavia M. Epifania &amp; Friends
 <section id="simulation-time" class="slide level2">
 <h2>Simulation time</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Simulation design</a></li><li><a href="#tabset-2-2">Comparisons criteria</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Simulation design</a></li><li><a href="#tabset-1-2">Comparisons criteria</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-1-1">
 <p>100 replications:</p>
 <ol type="1">
 <li><p>Generate an item bank <span class="math inline">\(B\)</span> of <span class="math inline">\(11\)</span> items:</p>
@@ -735,7 +754,7 @@ Ottavia M. Epifania &amp; Friends
 </ul></li>
 </ol>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-1-2">
 <p><span class="math inline">\(Q_{\text{Bruto}}\)</span> is the item selection that gets closer to the <span class="math inline">\(\text{TIF}^*\)</span>: 🥇</p>
 <ol type="1">
 <li><p>Successful attempts: Did the algorithm find an item combination able to approximate the <span class="math inline">\(\text{TIF}^*\)</span> without running out of items in <span class="math inline">\(B\)</span>?</p></li>
@@ -755,9 +774,9 @@ Ottavia M. Epifania &amp; Friends
 <section id="results" class="slide level2">
 <h2>Results</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Success</a></li><li><a href="#tabset-3-2">Ranks</a></li><li><a href="#tabset-3-3">Distances</a></li><li><a href="#tabset-3-4">More Distances</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Success</a></li><li><a href="#tabset-2-2">Ranks</a></li><li><a href="#tabset-2-3">Distances</a></li><li><a href="#tabset-2-4">More Distances</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-2-1">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -769,7 +788,7 @@ Ottavia M. Epifania &amp; Friends
 </div>
 <p>Bruto elapsed time: <span class="math inline">\(10.77 \pm 0.29\)</span></p>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-2-2">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -780,7 +799,7 @@ Ottavia M. Epifania &amp; Friends
 </div>
 </div>
 </div>
-<div id="tabset-3-3">
+<div id="tabset-2-3">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -791,7 +810,7 @@ Ottavia M. Epifania &amp; Friends
 </div>
 </div>
 </div>
-<div id="tabset-3-4">
+<div id="tabset-2-4">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -876,9 +895,9 @@ Ottavia M. Epifania &amp; Friends
 <section id="simulation-time-1" class="slide level2">
 <h2>Simulation time</h2>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Simulation design</a></li><li><a href="#tabset-4-2">Comparisons criteria</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Simulation design</a></li><li><a href="#tabset-3-2">Comparisons criteria</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-3-1">
 <p>100 replications, item bank of 50 items:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -911,10 +930,15 @@ Ottavia M. Epifania &amp; Friends
 </ul></li>
 </ol>
 </div>
-<div id="tabset-4-2">
+<div id="tabset-3-2">
 <ol type="1">
-<li><p>Distance from <span class="math inline">\(\text{TIF}^*\)</span>: <span class="math inline">\(\Delta_x = |\text{TIF}_B - \text{TIF}_{x}|\)</span>, with <span class="math inline">\(x \in \{B', \text{Frank}, \text{Léon}\}\)</span></p></li>
-<li><p>Number of items selected by Frank and Léon</p></li>
+<li>Distance from <span class="math inline">\(\text{TIF}^*\)</span>:</li>
+</ol>
+<blockquote>
+<p><span class="math inline">\(\Delta_x = |\text{TIF}_B - \text{TIF}_{x}|\)</span>, with <span class="math inline">\(x \in \{B', \text{Frank}, \text{Léon}\}\)</span></p>
+</blockquote>
+<ol start="2" type="1">
+<li>Number of items selected by Frank and Léon</li>
 </ol>
 </div>
 </div>
@@ -923,9 +947,9 @@ Ottavia M. Epifania &amp; Friends
 <section id="results-1" class="slide level2">
 <h2>Results</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Distance</a></li><li><a href="#tabset-5-2">Number of items</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Distance</a></li><li><a href="#tabset-4-2">Number of items</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1">
+<div id="tabset-4-1">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -936,7 +960,7 @@ Ottavia M. Epifania &amp; Friends
 </div>
 </div>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-4-2">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -955,9 +979,14 @@ Ottavia M. Epifania &amp; Friends
 <h1>In the end</h1>
 
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p>Boh mi verrà qualcosa in mente</p>
+<section id="what-is-missing" class="slide level2">
+<h2>What is missing</h2>
+<ul>
+<li><p>The estimation of the latent trait</p></li>
+<li><p>The inclusion of “qualitative” criteria like ATA</p></li>
+<li><p>A real data application</p></li>
+</ul>
+<p>But they are promising :)</p>
 <p><br></p>
 <p><br></p>
 <div class="fragment">
@@ -1138,7 +1167,7 @@ Ottavia M. Epifania &amp; Friends
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'fade',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'slow',

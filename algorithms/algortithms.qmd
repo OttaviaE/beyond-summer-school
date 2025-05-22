@@ -7,7 +7,7 @@ format:
     theme: mytheme.scss
     logo: "www/psicostat.jpg"
     footer: "Beyond summer school @ DiPSCo"
-    transition: fade
+    transition: none
     transition-speed: slow
     background-transition: fade
 # background-opacity: "0.45"
@@ -213,7 +213,7 @@ segments(-1, -exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
 ```
 :::
 
-::: {.fragment .fade-up}
+::: {.fragment .fade-in}
 ```{r}
 #| out-width: 100%
 
@@ -460,47 +460,77 @@ knitr::include_graphics("www/str-algo.png")
 
 ## Item Locating Algorithm – ILA
 
+::: {.r-stack}
 
-::: {.panel-tabset}
-
-### TIF Target, $k = 0$
-
+::: {.fragment .fade-in-then-out}
 ```{r}
+#| fig-cap: "TIF Target, $k = 0$"
+#| fig-cap-location: top
 knitr::include_graphics("www/TIF-target-1.png")
 ```
+:::
 
-
-
-### $k = 1$
-
-
+::: {.fragment .fade-in-then-out}
 ```{r}
+#| fig-cap: "$k = 1$"
+#| fig-cap-location: top
 knitr::include_graphics("www/TIF-first-1.png")
 ```
+:::
 
-
-
-
-### $k = 2$
-
+::: {.fragment .fade-in-then-out}
 ```{r}
+#| fig-cap: "$k = 2$"
+#| fig-cap-location: top
 knitr::include_graphics("www/TIF-second-1.png")
 ```
+:::
 
-
-
-### $k = 3$, stop!
-
+::: {.fragment .fade-in-then-out}
 ```{r}
+#| fig-cap: "$k = 3, stop!$"
+#| fig-cap-location: top
 knitr::include_graphics("www/TIF-third-1.png")
 ```
-
-
-
-
-
+:::
 
 :::
+
+<!-- ::: {.panel-tabset} -->
+
+<!-- ### TIF Target, $k = 0$ -->
+
+<!-- ```{r} -->
+<!-- knitr::include_graphics("www/TIF-target-1.png") -->
+<!-- ``` -->
+
+
+
+<!-- ### $k = 1$ -->
+
+
+<!-- ```{r} -->
+<!-- knitr::include_graphics("www/TIF-first-1.png") -->
+<!-- ``` -->
+
+
+
+
+<!-- ### $k = 2$ -->
+
+<!-- ```{r} -->
+<!-- knitr::include_graphics("www/TIF-second-1.png") -->
+<!-- ``` -->
+
+
+
+<!-- ### $k = 3$, stop! -->
+
+<!-- ```{r} -->
+<!-- knitr::include_graphics("www/TIF-third-1.png") -->
+<!-- ``` -->
+
+<!-- ::: -->
 
 
 ## ILA & ISA 
@@ -892,7 +922,9 @@ $B'$:
 
 ## Comparisons criteria 
 
-1. Distance from $\text{TIF}^*$: $\Delta_x = |\text{TIF}_B - \text{TIF}_{x}|$, with $x \in \{B', \text{Frank}, \text{Léon}\}$
+1. Distance from $\text{TIF}^*$: 
+
+> $\Delta_x = |\text{TIF}_B - \text{TIF}_{x}|$, with $x \in \{B', \text{Frank}, \text{Léon}\}$
 
 2. Number of items selected by Frank and Léon 
 
@@ -946,9 +978,16 @@ ggplot(long_num,
 
 # In the end 
 
-## 
+## What is missing 
 
-Boh mi verrà qualcosa in mente 
+- The estimation of the latent trait 
+
+- The inclusion of "qualitative" criteria like ATA 
+
+- A real data application 
+
+But they are promising :) 
+
 
 <br>
 
