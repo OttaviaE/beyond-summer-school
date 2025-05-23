@@ -812,13 +812,14 @@ ggplot(all_ranks,
   scale_shape_manual(values = c(15, 17, 19), labels = c("Frank", "ILA", "ISA")) +
   theme(legend.position = "inside",
         legend.position.inside = c(.12, .8),
+        legend.box = "horizontal",
         legend.title = element_blank(), 
         axis.text.x = element_blank(), 
         axis.text.y = element_text(size = 22), 
         axis.title = element_text(size = 24), 
         legend.text = element_text(size = 22)) +
-  guides(shape = guide_legend(override.aes = list(size = 5), direction = "horizontal"), 
-         fill = guide_legend(direction = "horizontal")) + 
+  guides(shape = guide_legend(override.aes = list(size = 5), ncol = 3), 
+         fill = guide_legend(ncol = 3)) + 
   geom_hline(yintercept = 10, linetype = 2, linewidth = 1, color = "darkgray") +
   geom_hline(yintercept = 50, linetype = 2, linewidth = 1, color = "darkgray")
 ```
@@ -875,8 +876,14 @@ cs = freq_distance %>%
 
 ggplot(cs, aes(x =  factor(distance), y = cs, color = name, group = name)) + geom_line(linewidth=1.2) + xlab("Symmetric Distance") + ylab("Cumulative Relative Frequency") + theme_bw() +  ylim(0,1) + scale_color_manual(values = wes_palette("AsteroidCity1"), 
                      labels = c("Frank", "ILA", "ISA")) + 
-  theme(legend.position = "bottom", 
-        legend.title = element_blank())
+   theme(legend.position = "inside",
+        legend.position.inside = c(.12, .8),
+        legend.box = "horizontal",
+        legend.title = element_blank(), 
+        axis.text.x = element_blank(), 
+        axis.text.y = element_text(size = 22), 
+        axis.title = element_text(size = 24), 
+        legend.text = element_text(size = 22))
 ```
 
 
