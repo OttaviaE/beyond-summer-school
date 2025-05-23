@@ -84,6 +84,28 @@ set.seed(999)
 
 # Introduction
 
+##
+
+::: {.callout-tip}
+## The "Friends":
+
+Pasquale Anselmi, Egidio Robusto, Livio Finos, Gianmarco Altoè, Luigi Lombardi
+
+:::
+
+<br>
+
+<br>
+
+<br>
+
+> ###  
+> **L'idea che la soluzione venga dall'intuizione del matto genio per natura e non dal lavoro complicato e _collettivo_ di centinaia, migliaia di scienziati, questa idea è un'idea falsa e sbagliata, che toglie valore all'Università [...]**
+> 
+> \  
+> — *Matteo Bordone*, 19 Febbraio 2025
+
+
 ## The logic
 
 
@@ -1061,14 +1083,5 @@ But they are promising :)
 <br>
 
 <br>
-
-. . . 
-
-::: {.callout-tip}
-## La scienza è uno sforzo *collettivo*
-
-Pasquale Anselmi, Egidio Robusto, Livio Finos, Gianmarco Altoè, Luigi Lombardi
-
-:::
 
 
