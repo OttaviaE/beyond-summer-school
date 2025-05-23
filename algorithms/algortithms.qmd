@@ -84,20 +84,24 @@ set.seed(999)
 
 # Introduction
 
-##
-
-::: {.callout-tip}
 ## The "Friends":
 
-Pasquale Anselmi, Egidio Robusto, Livio Finos, Gianmarco Altoè, Luigi Lombardi
+<br>
 
-:::
+<br>
+
+<!-- ::: {.callout-tip} -->
+
+> Pasquale Anselmi, Egidio Robusto, Livio Finos, Gianmarco Altoè, Luigi Lombardi
+
+<!-- ::: -->
 
 <br>
 
 <br>
 
-<br>
+
+<font size="4">
 
 > ###  
 > **L'idea che la soluzione venga dall'intuizione del matto genio per natura e non dal lavoro complicato e _collettivo_ di centinaia, migliaia di scienziati, questa idea è un'idea falsa e sbagliata, che toglie valore all'Università [...]**
@@ -105,6 +109,7 @@ Pasquale Anselmi, Egidio Robusto, Livio Finos, Gianmarco Altoè, Luigi Lombardi
 > \  
 > — *Matteo Bordone*, 19 Febbraio 2025
 
+</font>
 
 ## The logic
 
@@ -228,21 +233,24 @@ These models can be distinguished according to the number of parameters describi
 
 - Four-Parameter Logistic Model (4-PL; Barton & Lord, 1981)
 
-## In general
+<!-- ## In general -->
+
+<!-- <br> -->
+
+
+<!-- - Person and items parameters are on the same latent trait  -->
+
+<!-- - As the distance on the latent trait between the person parameter and the item parameter increases, the probability of a correct response changes  -->
+
+<!-- - When the parameter of the person matches the parameter of the item, then the probability of observing a correct response is 50% (well....not always) -->
+
+
+
+# The 2-Parameter Logistic Model
+
+## The Item Response Function
 
 <br>
-
-
-- Person and items parameters are on the same latent trait 
-
-- As the distance on the latent trait between the person parameter and the item parameter increases, the probability of a correct response changes 
-
-- When the parameter of the person matches the parameter of the item, then the probability of observing a correct response is 50% (well....not always)
-
-
-
-## The 2-Parameter Logistic Model
-
 
 $$P(x_{pi} = 1|\theta_p, b_i, a_i) = \frac{\exp[a_i(\theta_p - b_i)])}{1 + \exp[a_i(\theta_p - b_i)]}$$
 
@@ -281,7 +289,7 @@ plot(theta, IRT(theta, a = 0.5, b = 0),
      type = "l", 
      ylab = expression(paste("P(", x[p][i],  "= 1|", theta[p], ", ", b[i], ", ", a[i],  ")")), 
      ylim = c(0,1 ), cex.lab= 2, 
-     cex.axis =1.5, xlab = expression(theta), lwd = 3)
+     cex.axis =1.5, xlab = expression(theta), lwd = 3, col = "seagreen")
 
 segments(-7, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
          1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
@@ -382,7 +390,7 @@ par(mar = c(5,7,4,2) + 0.1)
 plot(theta, iifs[,1], 
      type = "l", 
      ylab = "IIFs",  cex.lab= 2, 
-     cex.axis =1.5, xlab = expression(theta), lwd = 3, ylim = c(0, 1))
+     cex.axis =1.5, xlab = expression(theta), lwd = 3, ylim = c(0, 1), col = "seagreen")
 lines(theta, iifs[,2], col = "firebrick")
 ```
 
@@ -480,6 +488,10 @@ Works on the definition of the desired characteristics that the STF should have 
 
 ## Some premises 
 
+:::: {.columns}
+
+:::{.column width="60%"} 
+
 ::: {.callout-note}
 ## Key concept
 
@@ -492,7 +504,7 @@ Works on the definition of the desired characteristics that the STF should have 
 ## The aim of the algorithms
 
 <font size = "4">
-*Minimize the distance* between $TIF^*$ and that of the short test forms (STFs) 
+*Minimize the distance* between TIF$^*$ and that of the short test forms (STFs) 
 </font>
 :::
 
@@ -516,7 +528,26 @@ TIF is considered as mean TIF $\rightarrow$ as the number of items increases, th
 </font>
 :::
 
+:::
 
+::: {.column width="40%"}
+
+
+<br>
+
+
+<br>
+
+$B$: Set of items in the full length test 
+
+$Q_x \subset B$: Subset of items selected by $x$
+
+$||A||$: cardinality of set $A$
+
+$i^*$: Item considered for inclusion at each iteration
+:::
+
+::::
 
 ## The gold standard: Bruto 
 
@@ -629,16 +660,11 @@ knitr::include_graphics("www/TIF-third-1.png")
 
 ![](www/twins.jpg){.absolute top=50 right=50 width="250" height="150"}
 
-<font size="4">
-$B$: Item bank 
+<br>
+
+<br>
 
 
-$Q^k \subset B$: Set of items selected for inclusion in the STF up to iteration $k$
-
-$\mathbf{TIF}^*$: TIF target 
-
-$i^*$: Item selected at each iteration
-</font>
 
 :::: {.columns}
 
@@ -764,7 +790,7 @@ library(ggplot2)
 library(wesanderson)
 ggplot(elapsed[!elapsed$name %in% "bruto_elapsed", ], 
        aes(x = name, y = value, color = name)) + geom_boxplot() + theme_light() + 
-  ylab("Elapsed Time (Minutes") +
+  ylab("Elapsed Time (Minutes)") +
   theme(legend.position = "none", 
         axis.title.y = element_text(size = 24), 
         axis.text = element_text(size = 22), 
@@ -784,13 +810,15 @@ ggplot(all_ranks,
   scale_color_manual(values = wes_palette("AsteroidCity1"), 
                      labels = c("Frank", "ILA", "ISA")) + xlab("Replication") + ylab("Percentile Rank") +
   scale_shape_manual(values = c(15, 17, 19), labels = c("Frank", "ILA", "ISA")) +
-  theme(legend.position = "bottom", 
+  theme(legend.position = "inside",
+        legend.position.inside = c(.12, .8),
         legend.title = element_blank(), 
         axis.text.x = element_blank(), 
         axis.text.y = element_text(size = 22), 
         axis.title = element_text(size = 24), 
         legend.text = element_text(size = 22)) +
-  guides(shape = guide_legend(override.aes = list(size = 5))) + 
+  guides(shape = guide_legend(override.aes = list(size = 5), direction = "horizontal"), 
+         fill = guide_legend(direction = "horizontal")) + 
   geom_hline(yintercept = 10, linetype = 2, linewidth = 1, color = "darkgray") +
   geom_hline(yintercept = 50, linetype = 2, linewidth = 1, color = "darkgray")
 ```

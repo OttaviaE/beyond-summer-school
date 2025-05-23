@@ -342,29 +342,24 @@ Ottavia M. Epifania &amp; Friends
 <h1>Introduction</h1>
 
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>The “Friends”:</strong></p>
-</div>
-<div class="callout-content">
-<p>Pasquale Anselmi, Egidio Robusto, Livio Finos, Gianmarco Altoè, Luigi Lombardi</p>
-</div>
-</div>
-</div>
+<section id="the-friends" class="slide level2">
+<h2>The “Friends”:</h2>
 <p><br></p>
 <p><br></p>
-<p><br></p>
+<!-- ::: {.callout-tip} -->
 <blockquote>
-<h3 id="section-1"></h3>
+<p>Pasquale Anselmi, Egidio Robusto, Livio Finos, Gianmarco Altoè, Luigi Lombardi</p>
+</blockquote>
+<!-- ::: -->
+<p><br></p>
+<p><br></p>
+<p><font size="4"></font></p><font size="4">
+<blockquote>
+<h3 id="section"></h3>
 <p><strong>L’idea che la soluzione venga dall’intuizione del matto genio per natura e non dal lavoro complicato e <em>collettivo</em> di centinaia, migliaia di scienziati, questa idea è un’idea falsa e sbagliata, che toglie valore all’Università […]</strong></p>
 <p>&nbsp; — <em>Matteo Bordone</em>, 19 Febbraio 2025</p>
 </blockquote>
+</font><p><font size="4"></font></p>
 </section>
 <section id="the-logic" class="slide level2">
 <h2>The logic</h2>
@@ -455,18 +450,20 @@ Ottavia M. Epifania &amp; Friends
 <li><p>Three-Parameter Logistic Model (3-PL; Lord, 1980)</p></li>
 <li><p>Four-Parameter Logistic Model (4-PL; Barton &amp; Lord, 1981)</p></li>
 </ul>
+<!-- ## In general -->
+<!-- <br> -->
+<!-- - Person and items parameters are on the same latent trait  -->
+<!-- - As the distance on the latent trait between the person parameter and the item parameter increases, the probability of a correct response changes  -->
+<!-- - When the parameter of the person matches the parameter of the item, then the probability of observing a correct response is 50% (well....not always) -->
+</section></section>
+<section>
+<section id="the-2-parameter-logistic-model" class="title-slide slide level1 center">
+<h1>The 2-Parameter Logistic Model</h1>
+
 </section>
-<section id="in-general" class="slide level2">
-<h2>In general</h2>
+<section id="the-item-response-function" class="slide level2">
+<h2>The Item Response Function</h2>
 <p><br></p>
-<ul>
-<li><p>Person and items parameters are on the same latent trait</p></li>
-<li><p>As the distance on the latent trait between the person parameter and the item parameter increases, the probability of a correct response changes</p></li>
-<li><p>When the parameter of the person matches the parameter of the item, then the probability of observing a correct response is 50% (well….not always)</p></li>
-</ul>
-</section>
-<section id="the-2-parameter-logistic-model" class="slide level2">
-<h2>The 2-Parameter Logistic Model</h2>
 <p><span class="math display">\[P(x_{pi} = 1|\theta_p, b_i, a_i) = \frac{\exp[a_i(\theta_p - b_i)])}{1 + \exp[a_i(\theta_p - b_i)]}\]</span></p>
 <p><br></p>
 <div class="columns">
@@ -591,6 +588,8 @@ Ottavia M. Epifania &amp; Friends
 </section>
 <section id="some-premises" class="slide level2">
 <h2>Some premises</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -613,7 +612,7 @@ Ottavia M. Epifania &amp; Friends
 <p><strong>The aim of the algorithms</strong></p>
 </div>
 <div class="callout-content">
-<p><font size="4"> <em>Minimize the distance</em> between <span class="math inline">\(TIF^*\)</span> and that of the short test forms (STFs) </font></p>
+<p><font size="4"> <em>Minimize the distance</em> between TIF<span class="math inline">\(^*\)</span> and that of the short test forms (STFs) </font></p>
 </div>
 </div>
 </div>
@@ -643,6 +642,14 @@ Ottavia M. Epifania &amp; Friends
 </div>
 </div>
 </div>
+</div><div class="column" style="width:40%;">
+<p><br></p>
+<p><br></p>
+<p><span class="math inline">\(B\)</span>: Set of items in the full length test</p>
+<p><span class="math inline">\(Q_x \subset B\)</span>: Subset of items selected by <span class="math inline">\(x\)</span></p>
+<p><span class="math inline">\(||A||\)</span>: cardinality of set <span class="math inline">\(A\)</span></p>
+<p><span class="math inline">\(i^*\)</span>: Item considered for inclusion at each iteration</p>
+</div></div>
 </section>
 <section id="the-gold-standard-bruto" class="slide level2">
 <h2>The gold standard: Bruto</h2>
@@ -659,7 +666,7 @@ Ottavia M. Epifania &amp; Friends
 <p>It is “doomed” to find the best combination of items 🥇</p>
 </div>
 </section>
-<section id="in-general-1" class="slide level2">
+<section id="in-general" class="slide level2">
 <h2>In general</h2>
 
 <img data-src="www/str-algo.png" class="quarto-figure quarto-figure-center r-stretch" width="348"></section>
@@ -737,10 +744,8 @@ Ottavia M. Epifania &amp; Friends
 <section id="ila-isa" class="slide level2">
 <h2>ILA &amp; ISA</h2>
 <p><img data-src="www/twins.jpg" class="absolute" style="top: 50px; right: 50px; width: 250px; height: 150px; "></p>
-<p><font size="4"> <span class="math inline">\(B\)</span>: Item bank</font></p><font size="4">
-<p><span class="math inline">\(Q^k \subset B\)</span>: Set of items selected for inclusion in the STF up to iteration <span class="math inline">\(k\)</span></p>
-<p><span class="math inline">\(\mathbf{TIF}^*\)</span>: TIF target</p>
-</font><p><font size="4"><span class="math inline">\(i^*\)</span>: Item selected at each iteration </font></p>
+<p><br></p>
+<p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>ILA</p>
@@ -939,7 +944,7 @@ Ottavia M. Epifania &amp; Friends
 <p><span class="math display">\[  \text{IIF}_{i}(r) = \dfrac{a_i^2[P(\theta)-c_i]^2[d_r - P(\theta)]^2}{(d_{r}-c_i)^2 P(\theta)Q(\theta)}\]</span> <span class="math inline">\(r = \{0, 1, \ldots, ||B||\}\)</span></p>
 </div>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <div class="cell">
 <iframe src="https://ottaviae.shinyapps.io/app-tired/?showcase=0" width="960" height="800px" data-external="1">
