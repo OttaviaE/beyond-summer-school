@@ -10,6 +10,8 @@ format:
     transition: none
     transition-speed: slow
     background-transition: fade
+    slide-number: true
+    show-slide-number: print
 # background-opacity: "0.45"
 #    data-background-size: 400px, cover
 #    data-background-position: 50% 10%, center
@@ -82,6 +84,70 @@ set.seed(999)
 
 # Introduction
 
+## The logic
+
+
+
+:::: {.columns}
+
+:::{.column width="20%"}
+```{r}
+knitr::include_graphics("www/lisa.png")
+```
+
+$$A_{\text{Lisa}}$$
+:::
+
+:::{.column width="20%"}
+
+<br>
+
+<br>
+
+$$\mathbf{Q_1}$$
+
+$3 +2 = ?$
+
+$$d_{\text{q}_1}$$
+:::
+
+:::{.column width="20%"}
+
+<br>
+
+<br>
+
+$$\mathbf{Q_2}$$
+
+$3x +2y + 2 = ?$
+
+$$d_{\text{q}_2}$$
+:::
+
+:::{.column width="20%"}
+<div text-align="right">
+```{r}
+#| fig-align: right
+#| out-width: "110%"
+knitr::include_graphics("www/bart.png")
+```
+
+$$A_{\text{Bart}}$$
+
+</div>
+:::
+::::
+
+<font size="4">
+
+Bart, Lisa, $\mathbf{Q_1}$, and $\mathbf{Q_2}$ are all on the same latent trait: 
+
+$\dfrac{A_p}{d_i} > 1$ if $A_p > d_i$
+
+$\dfrac{A_p}{d_i} < 1$ if $A_p < d_i$
+
+</font>
+
 ## Basics of IRT
 
 <br>
@@ -95,6 +161,9 @@ The characteristics of the <span style="color:#9B0014;">person</span> can be des
 The characteristics of the <span style="color:#3a5fcd;">item</span> can be described by one or more parameters (**difficulty**, **discrimination**, **guessing**, **careless error**)
 
 The item, the person and their characteristics are located on the same latent trait
+
+
+
 
 
 ## To each its own... IRT model 
