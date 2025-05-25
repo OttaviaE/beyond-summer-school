@@ -327,13 +327,13 @@ plot(theta, IRT(theta, a = 0.5, b = 0),
      ylim = c(0,1 ), cex.lab= 2, 
      cex.axis =1.5, xlab = expression(theta), lwd = 3, col = "seagreen")
 
-segments(-7, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
-         1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
-         col = "firebrick", lty = 3, lwd = 3)
+# segments(-7, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+#          1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+#          col = "firebrick", lty = 3, lwd = 3)
 mycol = rgb(.54, .114, .89)
-segments(1, -exp(0.5 *(1))/(1+exp(0.5 *(1))), 
-        1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
-         col = "firebrick", lty = 3, lwd = 3)
+# segments(1, -exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+#         1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
+#          col = "firebrick", lty = 3, lwd = 3)
 
 segments(-7, exp(0.5 *(-1))/(1+exp(0.5 *(-1))), 
          -1, exp(0.5 *(-1))/(1+exp(0.5 *(-1))), 
@@ -341,9 +341,9 @@ segments(-7, exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
 
 rasterImage(lisa, 0.6, -0.10, 1.5, 0.15)
 rasterImage(bart, -1.5, -0.10, -0.5, 0.15)
-segments(-1, -exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
-        -1, exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
-         col = "royalblue4", lty = 3, lwd = 3)
+# segments(-1, -exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
+#         -1, exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
+#          col = "royalblue4", lty = 3, lwd = 3)
 
 ## aggiunge l'item più discirminativo a partità di tutto il resto 
 
@@ -359,11 +359,8 @@ segments(1, -exp(1.5 *(1))/(1+exp(1.5 *(1))),
         1, exp(1.5 *(1))/(1+exp(1.5 *(1))), 
          col = "firebrick", lty = 3, lwd = 3)
 
-segments(-7, exp(1.5 *(-1))/(1+exp(1.5 *(-1))), 
-         -1, exp(1.5 *(-1))/(1+exp(1.5 *(-1))), 
-         col = "royalblue4", lty = 3, lwd = 3)
-segments(-1, -exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
-        -1, exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
+segments(-7, exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
+         -1, exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
          col = "royalblue4", lty = 3, lwd = 3)
 
 ```
@@ -391,7 +388,7 @@ plot(theta, iifs[,1],
      type = "l", 
      ylab = "IIFs",  cex.lab= 2, 
      cex.axis =1.5, xlab = expression(theta), lwd = 3, ylim = c(0, 1), col = "seagreen")
-lines(theta, iifs[,2], col = "firebrick")
+lines(theta, iifs[,2], col = "darkorchid")
 ```
 
 
