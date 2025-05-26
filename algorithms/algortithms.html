@@ -337,11 +337,6 @@ Ottavia M. Epifania &amp; Friends
 </div>
 
 </section>
-<section>
-<section id="introduction" class="title-slide slide level1 center">
-<h1>Introduction</h1>
-
-</section>
 <section id="the-friends" class="slide level2">
 <h2>The “Friends”:</h2>
 <p><br></p>
@@ -360,6 +355,11 @@ Ottavia M. Epifania &amp; Friends
 <p>&nbsp; — <em>Matteo Bordone</em>, 19 Febbraio 2025</p>
 </blockquote>
 </font><p><font size="4"></font></p>
+</section>
+<section>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
+
 </section>
 <section id="the-logic" class="slide level2">
 <h2>The logic</h2>
@@ -486,12 +486,23 @@ Ottavia M. Epifania &amp; Friends
 </div>
 </div>
 </div>
-<div class="fragment fade-in">
+<div class="fragment fade-in-then-out">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
 <p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -504,13 +515,13 @@ Ottavia M. Epifania &amp; Friends
 <h2>Item Information Function:</h2>
 <p><span class="math display">\[IIF_i = a_i^2P(\theta, b_i, a_i)[1-P(\theta, b_i, a_i)]\]</span></p>
 
-<img data-src="algortithms_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<img data-src="algortithms_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="test-information-function" class="slide level2">
 <h2>Test Information Function:</h2>
 <p><span class="math display">\[TIF = \sum_{i = 1}^{||B||} IIF_i\]</span></p>
 <p><span class="math inline">\(B\)</span>: Set of items of a full-length test (<span class="math inline">\(||X||\)</span> cardinality of set <span class="math inline">\(X\)</span>)</p>
 
-<img data-src="algortithms_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="algortithms_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="intuitively" class="slide level2">
 <h2>Intuitively</h2>
 <div class="cell">
@@ -568,18 +579,22 @@ Ottavia M. Epifania &amp; Friends
 <section id="automated-test-assembly" class="slide level2">
 <h2>Automated Test Assembly</h2>
 <p>Works on the definition of the desired characteristics that the STF should have in the form of <em>target information function</em>:</p>
+<div class="fragment">
 <ul>
-<li>Absolute Information: Both the shape (the shape) and the height (amount of information) are defined</li>
+<li>Absolute Information: Both the shape (regions os the latent trait) and the height (amount of information) are defined</li>
 </ul>
 <blockquote>
 <p>minmax algorithm: minimize the maximum distance between the target information function and the information function of the STF</p>
 </blockquote>
+</div>
+<div class="fragment">
 <ul>
 <li>Relative Information: Only the shape is defined through the definition of discrete latent trait levels of interest for which the information needs to be maximized</li>
 </ul>
 <blockquote>
 <p>maxmin algorithm: maximize the minimum information for the defined levels of the latent trait</p>
 </blockquote>
+</div>
 </section></section>
 <section>
 <section id="new-algorithms" class="title-slide slide level1 center">
@@ -856,7 +871,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -868,7 +883,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -879,7 +894,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -890,7 +905,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -917,7 +932,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -928,7 +943,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1029,7 +1044,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1040,7 +1055,7 @@ Ottavia M. Epifania &amp; Friends
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="algortithms_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
 </figure>
 </div>
 </div>

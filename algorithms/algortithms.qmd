@@ -82,7 +82,6 @@ set.seed(999)
 
 
 
-# Introduction
 
 ## The "Friends":
 
@@ -110,6 +109,9 @@ set.seed(999)
 > — *Matteo Bordone*, 19 Febbraio 2025
 
 </font>
+
+# Introduction
+
 
 ## The logic
 
@@ -279,6 +281,28 @@ $a_i$: Discrimination of item $i$
 ::: {.fragment .fade-in-then-out}
 ```{r}
 #| out-width: 100%
+theta = seq(-4,4, length.out = 1000)
+par(mar = c(5,7,4,2) + 0.1) 
+plot(theta, IRT(theta, a = 0.5, b = 0), 
+     type = "l", 
+     ylab = expression(paste("P(", x[p][i],  "= 1|", theta[p], ", ", b[i], ", ", a[i],  ")")), 
+     ylim = c(0,1 ), cex.lab= 2, 
+     cex.axis =1.5, xlab = expression(theta), lwd = 3, col = "seagreen")
+
+segments(-7, exp(0.5 *(0))/(1+exp(0.5 *(0))), 
+         0, exp(0.5 *(0))/(1+exp(0.5 *(0))), 
+         col = "darkgrey", lty = 3, lwd = 3)
+
+segments(0, -exp(0.5 *(0))/(1+exp(0.5 *(0))), 
+        0, exp(0.5 *(0))/(1+exp(0.5 *(0))), 
+         col = "darkgrey", lty = 3, lwd = 3)
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+```{r}
+#| out-width: 100%
 
 library(png)
 lisa = readPNG( "www/lisa.png")
@@ -335,15 +359,15 @@ mycol = rgb(.54, .114, .89)
 #         1, exp(0.5 *(1))/(1+exp(0.5 *(1))), 
 #          col = "firebrick", lty = 3, lwd = 3)
 
-segments(-7, exp(0.5 *(-1))/(1+exp(0.5 *(-1))), 
-         -1, exp(0.5 *(-1))/(1+exp(0.5 *(-1))), 
+segments(-7, exp(1.5 *(-1))/(1+exp(1.5 *(-1))), 
+         -1, exp(1.5 *(-1))/(1+exp(1.5 *(-1))), 
          col = "royalblue4", lty = 3, lwd = 3)
 
 rasterImage(lisa, 0.6, -0.10, 1.5, 0.15)
 rasterImage(bart, -1.5, -0.10, -0.5, 0.15)
-# segments(-1, -exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
-#         -1, exp(0.5 *(-1))/(1+exp(0.5 *(-1))),
-#          col = "royalblue4", lty = 3, lwd = 3)
+segments(-1, -exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
+        -1, exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
+         col = "royalblue4", lty = 3, lwd = 3)
 
 ## aggiunge l'item più discirminativo a partità di tutto il resto 
 
@@ -359,9 +383,9 @@ segments(1, -exp(1.5 *(1))/(1+exp(1.5 *(1))),
         1, exp(1.5 *(1))/(1+exp(1.5 *(1))), 
          col = "firebrick", lty = 3, lwd = 3)
 
-segments(-7, exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
-         -1, exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
-         col = "royalblue4", lty = 3, lwd = 3)
+# segments(-7, exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
+#          -1, exp(1.5 *(-1))/(1+exp(1.5 *(-1))),
+#          col = "royalblue4", lty = 3, lwd = 3)
 
 ```
 :::
@@ -473,9 +497,13 @@ Being focused on the item information and on the ability of each item to measure
 
 Works on the definition of the desired characteristics that the STF should have in the form of *target information function*: 
 
-- Absolute Information: Both the shape (the shape) and the height (amount of information) are defined 
+. . . 
+
+- Absolute Information: Both the shape (regions os the latent trait) and the height (amount of information) are defined 
 
 > minmax algorithm: minimize the maximum distance between the target information function and the information function of the STF
+
+. . . 
 
 - Relative Information: Only the shape is defined through the definition of discrete latent trait levels of interest for which the information needs to be maximized
 
@@ -877,8 +905,7 @@ ggplot(cs, aes(x =  factor(distance), y = cs, color = name, group = name)) + geo
         legend.position.inside = c(.12, .8),
         legend.box = "horizontal",
         legend.title = element_blank(), 
-        axis.text.x = element_blank(), 
-        axis.text.y = element_text(size = 22), 
+        axis.text = element_text(size = 22), 
         axis.title = element_text(size = 24), 
         legend.text = element_text(size = 22))
 ```
