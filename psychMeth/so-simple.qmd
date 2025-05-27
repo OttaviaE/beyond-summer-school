@@ -98,8 +98,6 @@ How it ended:
 
 \vspace{2mm}
 
-> A publication on Psychological Methods
-
 
 ```{r}
 #| out-width: 80%
@@ -290,7 +288,7 @@ Mario & Compatible   & $y_{cm1}$ & $y_{cm2}$ & $y_{cm3}$ & $y_{cm4}$ & $y_{cm6}$
 
 ::: {.column width="50%"}
 
-$$s = \dfrac{\bar{X}_{\text{comp}} - \bar{X}_{\text{inc}}}{sd_{\text{pooled}}}$$
+$$s_p = \dfrac{\bar{X}_{p,\text{comp}} - \bar{X}_{p,\text{inc}}}{sd_{\text{pooled}}}$$
 
 :::
 
@@ -1211,7 +1209,7 @@ graph_b_ci +  # object containing the starting plot
         axis.title.y = element_blank(), 
         axis.text = element_text(size = 18, color=c(rep("darkgreen", 8), rep("firebrick4", 8),
                                          rep("tan3", 6), 
-                                        rep("salmon", 6) ))) + 
+                                        rep("aquamarine3", 6) ))) + 
   scale_color_manual(values = c("royalblue4", "gold"), 
                     labels = c("WBBG", "WGBB")) 
 
@@ -1308,15 +1306,36 @@ ggplot(intensity,
        aes(x = condval, y = stimuli, col = categoria)) + geom_point() + # increase the size of the points
   geom_errorbarh(aes(xmin = condval - 1.96*condsd, 
                      xmax= condval + 1.96*condsd)) + 
-  theme_light() +  scale_color_manual(values = c("darkgreen", "firebrick4", "tan3", "salmon")) + xlab(expression(delta)) + 
+  theme_light() +  scale_color_manual(values = c("darkgreen", "firebrick4", "tan3", "aquamarine3")) + xlab(expression(delta)) + 
   theme(legend.position = "none", 
         axis.title.x = element_text(size = 24), 
         axis.title.y = element_blank(), 
         axis.text.x = element_blank(),
         axis.text.y = element_text(size = 18, color=c(rep("darkgreen", 8), rep("firebrick4", 8),
                                          rep("tan3", 6), 
-                                        rep("salmon", 6) ))) 
+                                        rep("aquamarine3", 6) ))) 
 ```
 :::
 ::::
+
+# The end 
+
+### 
+
+- The best model depends on the other models... sometimes useful, never right 
+
+- The sky is the limit... but do not over complicate things 
+
+\pause
+
+\centering 
+HOWEVER
+
+\flushleft
+
+- Time and accuracy are independent from one another, pretty bold assumption
+
+
+
+
 
