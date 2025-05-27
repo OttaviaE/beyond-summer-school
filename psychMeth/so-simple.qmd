@@ -3,7 +3,6 @@ title: "So simple, yet so effective"
 author: "Ottavia M. Epifania"
 format:
   beamer:
-    toc: true
     slide-level: 3
     theme: Montpellier
     colortheme: dove
@@ -14,7 +13,9 @@ format:
 header-includes:
     # - \usetheme[compressed]{Singapore}
     - \AtBeginDocument{\author[Ottavia M. Epifania]{Ottavia M. Epifania \\ University of Trento \\\texttt{ottavia.epifania@unitn.it}}}
-    - \AtBeginDocument{\institute[]{Beyond Summer School}}
+    - \AtBeginDocument{\institute[]{Beyond Summer School} }
+    - \AtBeginSubsection{}
+    - \AtBeginDocument{\date[]{May, 30, 2025}}
     - \usecolortheme{dove}
     - \useinnertheme{rounded}
     - \useoutertheme{miniframes}
@@ -59,12 +60,6 @@ header-includes:
     - \newcommand*{\sbj}[1]{\textcolor{person}{#1}}
     - \newcommand*{\colit}[1]{\textcolor{question}{#1}}
     - \newcommand*{\high}[1]{\textcolor{highlight}{#1}}
-    - \AtBeginSection[]
-          {
-             \begin{frame}[plain]
-             \tableofcontents[currentsection]
-              \end{frame}
-          }
 editor_options: 
   chunk_output_type: console
 ---
@@ -85,8 +80,36 @@ knitr::knit_hooks$set(output = function(x, options) {
  })
 ```
 
+### 
 
-# Experiments with fully-crossed structures
+\centering
+How it started: 
+
+\vspace{2mm}
+
+> A random lesson by Professor Pastore on Generalized Linear Mixed Effects Models
+
+
+. . . 
+
+\centering
+
+How it ended: 
+
+\vspace{2mm}
+
+> A publication on Psychological Methods
+
+
+```{r}
+#| out-width: 80%
+knitr::include_graphics("img/psymeth.png")
+```
+
+[https://doi.org/10.1037/met0000708](https://doi.org/10.1037/met0000708)
+
+
+# Fully-crossed structures
 
 ## An example: The SNARC effect
 
@@ -198,6 +221,8 @@ The "natural" one (so-called *compatible* condition)
 }
 ```
 
+. . . 
+
 The "innatural" one (so-called *incompatible* condition)
 
 ```{=latex}
@@ -298,6 +323,7 @@ Ease of interpretation
 2. All stimuli have the same impact (fixed effects)
 :::
 
+## The issue
 
 ### A long tradition 
 
@@ -336,19 +362,119 @@ There is no need to generalize the results because the stimuli are the populatio
 
 - The information at the stimulus level is lost 
 
+\pause
 
+:::: {.columns}
+
+::: {.column width="50%"}
+
+\Large
+
+$$\Sigma$$
+
+\normalsize
+
+\centering
 Linear Mixed Effects Models
 
+
+
+:::
+
+::: {.column width="50%"}
+\Large
+
+$$\psi$$
+
+\normalsize
+\centering
+
 Rasch model
+:::
+
+::::
+
+
+
 
 \pause
 
 \centering
+\includegraphics[width=.10\linewidth]{img/psicostat.jpg}
+
 \large
 
 Rasch-like parametrization estimated with Linear Mixed Effects Models
 
+## When?
+
 ###
+
+
+```{=latex}
+\tikzstyle{respondent} = [rectangle, minimum width=1.5cm, minimum height=1cm,text centered, draw=white]
+\tikzstyle{stimulus} = [rectangle, minimum width=1.5cm, minimum height=1cm,text centered, draw=white]
+\tikzstyle{trial} = [rectangle, minimum width=1cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{process} = [rectangle, rounded corners, minimum width=0.5cm, minimum height=1cm, text width =2.5cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{condition} = [rectangle, rounded corners,draw=black,text width=2cm, text height=6.5cm]
+
+\centering
+\scalebox{.30}{
+	\begin{tikzpicture}[inner sep=1pt,auto=left, node distance=2cm,>=latex']
+ 				 
+ 				\node(s1) at(2, 16)  [respondent]  {$p_1$};
+ 				\node(s2) at (2, 11) [respondent] {$p_2$};
+ 				\node(s3) at (2, 5.5) [respondent] {$p_3$};
+ 				\node(t1) at (12, 17) [ trial] {};
+ 				\node(t2) at (12, 15.5) [trial] {};
+ 				\node(t3) at (12, 14) [trial] {};
+ 				\node(t4) at (12, 12.5) [trial] {};
+ 				\node(t5) at (12, 9) [trial] {};
+ 				\node(t6) at (12, 7.5) [trial] {};
+ 				\node(t7) at (12, 6) [trial] {};
+ 				\node(t8) at (12, 4.5) [trial] {};
+ 				\node(stim1) at(22, 13)  [stimulus]  {\Smiley[3]};
+ 				\node(stim2) at (22, 7) [stimulus] {\Sleepey[3]};
+ 				\node at (12, 14.8) [condition, dashed,ultra thick] {};  
+ 				\node at (12, 6.8) [condition, black,ultra thick] {};  
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t1.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t1.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t1.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t2.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t2.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t2.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t3.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t3.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t3.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t4.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t4.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t4.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t5.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t5.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t5.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t6.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t6.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t6.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t7.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t7.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t7.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t8.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t8.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t8.west);
+ 				\draw [<-, shorten <= +3pt] (t1.east)  -- (stim1.west); 
+ 				\draw [<-, shorten <= +3pt] (t2.east)  -- (stim2.west); 
+ 	  			\draw [<-, shorten <= +3pt] (t3.east)  -- (stim1.west); 
+ 	 			\draw [<-, shorten <= +3pt] (t4.east)  -- (stim2.west); 
+ 	  			\draw [<-, shorten <= +3pt] (t5.east)  -- (stim1.west); 
+ 	 \draw [<-, shorten <= +3pt] (t6.east)  -- (stim2.west); 
+ 	  	\draw [<-, shorten <= +3pt] (t7.east)  -- (stim1.west); 
+ 	 \draw [<-, shorten <= +3pt] (t8.east)  -- (stim2.west); 
+ 			\end{tikzpicture}
+}
+
+```
+
 
 :::: {.columns}
 
@@ -399,7 +525,7 @@ $b_s$: "challenging" power of stimulus $s$
 \small
 Logit link function $g$:
 
-$g(\eta_{ps}) = log\left(\frac{\mu_{ps}}{1 - \mu_{ps}}\right)$
+$$g(\eta_{ps}) = log\left(\frac{\mu_{ps}}{1 - \mu_{ps}}\right)$$
 
 
 Inverse $g^{-1}$
@@ -427,25 +553,19 @@ $\delta_s$: the time intensity of stimulus $s$
 A linear  model with an identity function!
 
 
+## In summary
+
 ### 
 
-\footnotesize
+:::: {.columns}
 
-
+:::{.column width="50%"}
 ::: {.callout-note}
 ## Rasch
 
 \footnotesize
 
-$$P(x_{ps} = 1|\theta_p, b_s) = \dfrac{\exp(\theta_p - b_z)}{1+ \exp(\theta_p - b_z)}$$
-:::
-
-::: {.callout-important}
-## GLM (inverse function)
-\footnotesize
-
-$$P(x_{ps} = 1) = \displaystyle \frac{\exp(\theta_p \, + \, b_s)}{1 + \exp(\theta_p \, + \, b_s)}$$
-
+$P(x_{ps} = 1) = \dfrac{\exp(\theta_p - b_z)}{1+ \exp(\theta_p - b_z)}$
 :::
 
 ::: {.callout-note}
@@ -453,17 +573,37 @@ $$P(x_{ps} = 1) = \displaystyle \frac{\exp(\theta_p \, + \, b_s)}{1 + \exp(\thet
 
 \footnotesize
 
-$$E(t_{ps}| \tau_p, \delta_s) = \delta_s - \tau_p + \varepsilon$$
+$E(t_{ps}| \tau_p, \delta_s) = \delta_s - \tau_p + \varepsilon$
+:::
 :::
 
+:::{.column width="50%"}
+\footnotesize
 
 
 
 ::: {.callout-important}
+## GLM (inverse function)
+\footnotesize
+
+$P(x_{ps} = 1) = \displaystyle \frac{\exp(\theta_p \, + \, b_s)}{1 + \exp(\theta_p \, + \, b_s)}$
+
+:::
+
+::: {.callout-important}
 ## LM (identity function)
 
-$$E(t_{ps}| \tau_p, \delta_s) = \delta_s + \tau_p + \varepsilon$$
+$E(t_{ps}| \tau_p, \delta_s) = \delta_s + \tau_p + \varepsilon$
 :::
+
+:::
+
+::::
+
+
+
+
+
 
 
 
@@ -487,18 +627,26 @@ Needs to be extended:
 
 $$\eta = \mathbf{X}\beta + \color{blu}Zd$$
 
+$d$: Random effects associated to the random factors in $Z$
+
+$d$: Not model parameters! *Best Linear Unbiased Predictors* 
+
+$\Gamma$: Parameters estimated for the random factors in the model (variances and covariances)
+
 ## Random structures
 
 ### The maximal model
 
 Address all the possible sources of random variability that can be expected
 
-The models that are self for ones aim
+\pause
 
-Given the structure of the experiments:
+The models that are useful for ones aim
 
+\pause
 Common goal: Investigate the changes in the performance of the respondents between the associative conditions
 
+\pause
 Less common: Investigate the changes in the functioning of the stimuli between the associative conditions
 
 ### Preliminarities
@@ -517,7 +665,6 @@ Less common: Investigate the changes in the functioning of the stimuli between t
 
 Accuracy:
 
-\flushleft
 
 GLMM
 
@@ -530,11 +677,10 @@ $y = [0,1]$
 
 Log-time response
 
-\flushleft
 
 LMM
 
-$y = [0, + \infty]$ (log-transformed)
+$y = [0, + \infty)$ (log-transformed)
 
 
 $\varepsilon ~ \mathcal{N}(0, \sigma^2)$
