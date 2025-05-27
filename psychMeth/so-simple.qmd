@@ -627,9 +627,9 @@ Needs to be extended:
 
 $$\eta = \mathbf{X}\beta + \color{blu}Zd$$
 
-$d$: Random effects associated to the random factors in $Z$
+\small
 
-$d$: Not model parameters! *Best Linear Unbiased Predictors* 
+$d$: Random effects associated to the random factors in $Z$ $\ldots$ Not model parameters! *Best Linear Unbiased Predictors* 
 
 $\Gamma$: Parameters estimated for the random factors in the model (variances and covariances)
 
@@ -682,8 +682,9 @@ LMM
 
 $y = [0, + \infty)$ (log-transformed)
 
+\vspace{3mm}
 
-$\varepsilon ~ \mathcal{N}(0, \sigma^2)$
+$\varepsilon \sim \mathcal{N}(0, \sigma^2)$
 :::
 
 ::::
