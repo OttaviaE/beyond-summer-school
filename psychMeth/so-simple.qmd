@@ -10,7 +10,7 @@ format:
     navigation: horizontal
     fonttheme: structuresmallcapsserif
     highlight-style: tango
-    classoption: compress, aspectratio=169
+    classoption: compress, aspectratio=149
 header-includes:
     # - \usetheme[compressed]{Singapore}
     - \AtBeginDocument{\author[Ottavia M. Epifania]{Ottavia M. Epifania \\ University of Trento \\\texttt{ottavia.epifania@unitn.it}}}
@@ -831,7 +831,7 @@ Model 2 and Model 3: Same complexity, different focus
 
 The chosen model is the least wrong model *given the models considered*: Relativity applies everywhere
 
-# Real data: Individual Differences
+# Real data
 
 ### The Implicit Association Test
 
@@ -1158,7 +1158,7 @@ ggplot(ab_iatSingles,
 
 
 ```{r}
-#| out-width: 80%
+#| out-width: 70%
 #| fig-align: center
 blup_easiness_iat = as.data.frame(ranef(accuracy2,   
                                         condVar = TRUE)) 
@@ -1229,7 +1229,7 @@ graph_b_ci +  # object containing the starting plot
 ### $\tau_{\text{WGBB}}$ and $\tau_{\text{BGWB}}$
 
 ```{r}
-#| out-width: 80%
+#| out-width: 70%
 #| fig-align: center
 speed = as.data.frame(ranef(logtime3), condvar= TRUE)
 fixef_speed = data.frame(term = names(fixef(logtime3)), # assign the labels of the conditions to the term column
