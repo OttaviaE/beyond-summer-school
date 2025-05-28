@@ -8,8 +8,9 @@ format:
     colortheme: dove
     innertheme: rounded
     navigation: horizontal
+    fonttheme: structuresmallcapsserif
     highlight-style: tango
-    classoption: compress
+    classoption: compress, aspectratio=169
 header-includes:
     # - \usetheme[compressed]{Singapore}
     - \AtBeginDocument{\author[Ottavia M. Epifania]{Ottavia M. Epifania \\ University of Trento \\\texttt{ottavia.epifania@unitn.it}}}
@@ -78,6 +79,8 @@ knitr::knit_hooks$set(output = function(x, options) {
  }
  hook_output(x, options)
  })
+library(ggplot2)
+library(lme4)
 ```
 
 ### 
@@ -875,10 +878,16 @@ Evil, bad, horrible, terrible, nasty, pain, failure, hate
 
 ```{r}
 #| echo: true
-#| eval: true
+#| eval: false
 
-library(lme4) # Fitting LMMs
-library(ggplot2) # Plots
+# install package for fitting lmms
+install.packages("lme4")
+# nice plots :)
+install.packages("ggplot2")
+
+
+library(lme4) 
+library(ggplot2) 
 ```
 
 
