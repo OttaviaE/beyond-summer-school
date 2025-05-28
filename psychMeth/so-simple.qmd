@@ -37,7 +37,8 @@ header-includes:
     - \setbeamerfont{subtitle}{size=\large, series=\bfseries}
     - \setbeamercolor{frametitle}{bg=background}
     - \setbeamertemplate{frametitle}{\color{template}\small \bfseries\insertframetitle\par\vskip-6pt\hrulefill}
-    - \definecolor{template}{RGB}{204 204 204}
+    - \setbeamertemplate{navigation symbols}[default]
+    - \definecolor{template}{RGB}{158, 158, 158}
     - \definecolor{latenti}{RGB}{54, 114, 89}
     - \definecolor{manifeste}{RGB}{179, 7, 27}
     - \definecolor{background}{RGB}{251, 251, 251}
@@ -47,7 +48,6 @@ header-includes:
     - \definecolor{orangered2}{RGB}{238,64,0}
     - \definecolor{typical}{RGB}{8, 69, 148}
     - \definecolor{springgreen}{RGB}{0,205,102}
-    - \setbeamercolor{frametitle}{bg=background}
     - \setbeamercolor{frametitle}{fg=blu, bg = white}
     - \setbeamercolor{item}{fg=giallo}
     - \setbeamercolor{caption name}{fg=blu}
@@ -605,7 +605,7 @@ $E(t_{ps}| \tau_p, \delta_s) = \delta_s + \tau_p + \varepsilon$
 
 
 
-# Random Factors and Random Effects
+# Random Factors and Effects
 
 ###
 
