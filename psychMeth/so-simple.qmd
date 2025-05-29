@@ -54,7 +54,7 @@ header-includes:
     - \setbeamercolor{caption name}{fg=blu}
     - \setbeamercolor{section name}{fg=white}
     - \setbeamercolor{subsection name}{fg=white}
-    - \setbeamersize{text margin left=5mm,text margin right=5mm} 
+    - \setbeamersize{text margin left=3mm,text margin right=3mm} 
     - \def\tikzoverlay{\tikz[remember picture, overlay]\node[every overlay node]}
     - \definecolor{person}{RGB}{33, 113, 181}
     - \definecolor{question}{RGB}{181, 102, 33}
@@ -265,7 +265,7 @@ $t = \{1, 2, \ldots, T\}$: Number of trials (condition $\times$ stimulus $\times
 \vspace{3mm}
 
 \centering
-\scalebox{.80}{
+\scalebox{.90}{
 \begin{tabular}{ll cccccccc}
 \hline
 & &  \multicolumn{4}{c}{Small Numbers} & \multicolumn{4}{c}{Large Numbers} \\
@@ -834,8 +834,30 @@ The chosen model is the least wrong model *given the models considered*: Relativ
 # Real data
 
 ### The Implicit Association Test
+\begin{textblock*}{10cm}(0.5cm,1cm)
+{\includegraphics[width=\linewidth]{cokeIAT1.png}}
+\end{textblock*}
+\begin{textblock*}{10cm}(0.7cm,1.4cm)
+{\includegraphics<2->[width=\linewidth]{cokeIAT2.png}}
+\end{textblock*}
+\begin{textblock*}{10cm}(0.9cm,1.8cm)
+{\includegraphics<3->[width=\linewidth]{cokeIAT3.png}}
+\end{textblock*}
+\begin{textblock*}{10cm}(1.1cm,2.2cm)
+{\includegraphics<4->[width=\linewidth]{cokeIAT4.png}}
+\end{textblock*}
+\begin{textblock*}{10cm}(1.3cm,2.6cm)
+{\includegraphics<5->[width=\linewidth]{cokeIAT5.png}}
+\end{textblock*}
+	
+\vskip0pt plus 1filll
+	
+\onslide<2-2> Response key: E
+\onslide<3-3> Response key: I
+\onslide<4-4> Response key: I
+\onslide<5-5> Response key: E
 
-
+###
 
 \small
 
